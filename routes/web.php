@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/',[HomeController::class,'index']);
+Route::get('/home',[HomeController::class,'home'])->middleware(['auth', 'verified']);
 
 
 

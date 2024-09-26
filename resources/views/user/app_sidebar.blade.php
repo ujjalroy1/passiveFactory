@@ -132,17 +132,27 @@
                             </div>
                         </a>
                     </li>
+                    @if (Route::has('login'))
+                    @auth
+                        
+
                     <li>
-                        <a href="app-login.html" class="item">
-                            <div class="icon-box bg-primary">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </div>
-                            <div class="in">
-                                Log out
-                            </div>
-                        </a>
+                        <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                            @csrf
+                            <button type="submit" class="item" style="background:none;border:none;padding:0;margin:0;cursor:pointer;">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="log-out-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Log out
+                                </div>
+                            </button>
+                        </form>
                     </li>
+                    
+                    @else
                     <li>
+                  
                         <a href="{{ url('/login') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="log-out-outline"></ion-icon>
@@ -162,7 +172,9 @@
                             </div>
                         </a>
                     </li>
-
+                    @endauth
+                        
+                    @endif
 
                 </ul>
                 <!-- * others -->
