@@ -135,9 +135,10 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <label class="label" for="password">Password</label>
+                                
                                 <input type="password" class="form-control" id="password" autocomplete="off"
-                                    placeholder="Your password" name="password">
+                                    placeholder="Your password" name="password" style="display: none">
+                                   
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -146,9 +147,9 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <label class="label" for="password_confirmation">Password Again</label>
+                               
                                 <input type="password" class="form-control" id="password_confirmation" autocomplete="off"
-                                    placeholder="Type password again" name="password_confirmation">
+                                    placeholder="Type password again" name="password_confirmation" style="display: none">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -163,7 +164,7 @@
 
 
                 <div class="form-button-group transparent">
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" id="generate-password">Register</button>
                 </div>
 
             </form>
@@ -187,6 +188,44 @@
     <script src="{{ asset('finr-app/assets/js/plugins/splide/splide.min.js') }}"></script>
     <!-- Base Js File -->
     <script src="{{ asset('fine-app/assets/js/base.js') }}"></script>
+
+
+    <!-- Add a button to trigger password generation -->
+
+
+<script>
+    // Function to generate a strong password
+    function generateStrongPassword(length = 16) {
+        const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+        const numbers = '0123456789';
+        const symbols = '!@#$%^&*()_+-=[]{}|;:,<.>?/';
+        
+        const allCharacters = upperCase + lowerCase + numbers + symbols;
+
+        let password = '';
+        for (let i = 0; i < length; i++) {
+            password += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
+        }
+
+        return password;
+    }
+
+    // Function to fill both password fields with the generated password
+    function setGeneratedPassword() {
+        const password = generateStrongPassword(); // Generate a strong password
+
+        // Set the generated password to both fields
+        document.getElementById('password').value = password;
+        document.getElementById('password_confirmation').value = password;
+    }
+
+    // Event listener for the button click to generate the password
+    document.getElementById('generate-password').addEventListener('click', function() {
+        setGeneratedPassword();
+    });
+</script>
+
 
 
 </body>
