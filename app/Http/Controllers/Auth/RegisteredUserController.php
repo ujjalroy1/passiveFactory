@@ -9,8 +9,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Mail\passwordMail;
+
 
 class RegisteredUserController extends Controller
 {
@@ -49,6 +52,10 @@ class RegisteredUserController extends Controller
             'account_id'=>$accountId,
             'password' => Hash::make($request->password),
         ]);
+        $to=$request->email;
+        $sub="Your password";
+        $pass=$request->password;
+        Mail::to($to)->send(new passwordMail($pass,$sub));
 
         event(new Registered($user));
 
