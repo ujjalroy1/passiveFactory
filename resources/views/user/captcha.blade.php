@@ -95,25 +95,35 @@
                $price=$captcha[$random]->price;
          ?>
 
+<form action="{{ url('store_captcha_point') }}" method="POST">
+    @csrf
+    <div class="card">
+        <div class="card-title">Title : {{ $title }}</div>
+        <div class="card-code">Captcha : {{ $code }}</div>
+        <img src="{{ asset('captcha/cat.jpg') }}" alt="Product Image">
+        <div class="card-price">Price: {{ $price }}</div>
 
-        <div class="card">
-          <div class="card-title">Title : {{ $title }}</div>
-          <div class="card-code">Captcha : {{ $code }}</div>
-          <img src="{{ asset('captcha/cat.jpg')}}" alt="Product Image">
-          <div class="card-price">Price: {{$price }}</div>
-  
-          <div class="card-input">
-            <input type="text" placeholder="Enter Captcha" id="quantity-input">
-            <button onclick="submitCard()">Submit</button>
-              <a href="{{ url('captcha1') }}" style="display: inline-block; padding: 7px 14px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; font-size: 12px; cursor: pointer; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#0056b3';" onmouseout="this.style.backgroundColor='#007bff';">Reload</a>
-          </div>
-          
+        <!-- Hidden inputs to send $title, $code, and $price -->
+        <input type="hidden" name="title" value="{{ $title }}">
+        <input type="hidden" name="code" value="{{ $code }}">
+        <input type="hidden" name="price" value="{{ $price }}">
+
+        <div class="card-input">
+            <input type="text" name="user_input_captcha" placeholder="Enter Captcha" id="quantity-input">
+            <button type="submit">Submit</button>
+
+            <a href="{{ url('captcha1') }}" style="display: inline-block; padding: 7px 14px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; font-size: 12px; cursor: pointer; transition: background-color 0.3s ease;" 
+               onmouseover="this.style.backgroundColor='#0056b3';" onmouseout="this.style.backgroundColor='#007bff';">Reload</a>
         </div>
+    </div>
+</form>
+
+
       `;
   
       function submitCard() {
         let quantity = document.getElementById("quantity-input").value;
-        alert("You submitted a quantity of: " + quantity);
+        alert("You Entered capthcha as : " + quantity);
       }
   
       function reloadCard() {

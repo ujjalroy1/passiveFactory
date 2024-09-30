@@ -11,6 +11,12 @@
             <strong>Task</strong>
         </div>
     </a>
+    <a href="{{ url('home') }}" class="item">
+        <div class="col">
+            <ion-icon name="cart-outline"></ion-icon>
+            <strong>Buy Package</strong>
+        </div>
+    </a>
     <a href="{{ asset('fine-app/app-components.html') }}" class="item">
         <div class="col">
             <ion-icon name="apps-outline"></ion-icon>

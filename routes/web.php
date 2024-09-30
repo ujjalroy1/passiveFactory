@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/',[HomeController::class,'index']);
 Route::get('/home',[HomeController::class,'home'])->middleware(['auth', 'verified']);
 Route::get('/captcha1',[HomeController::class,'captcha'])->middleware(['auth', 'verified']);
-
+Route::post('/store_captcha_point',[HomeController::class,'store_captcha_point'])->middleware(['auth', 'verified']);
 
 
 

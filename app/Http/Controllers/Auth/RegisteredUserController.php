@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Mail\passwordMail;
-
+use App\Models\wallet;
 
 class RegisteredUserController extends Controller
 {
@@ -30,6 +30,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    //generate account id
     private function generateNextAccountId()
     {
         
@@ -45,18 +46,30 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $accountId = $this->generateNextAccountId();
+        $accountId = $this->generateNextAccountId();//call the account_id
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'account_id'=>$accountId,
             'password' => Hash::make($request->password),
         ]);
+        //this for mail
         $to=$request->email;
         $sub="Your password";
         $pass=$request->password;
         Mail::to($to)->send(new passwordMail($pass,$sub));
 
+        //this for create a wallet
+        $wallet=new wallet();
+        $wallet->account_id=$accountId;
+        $wallet->main_balance=0.0;
+        $wallet->bonus=0.0;
+        $wallet->refer=0.0;
+        $wallet->gift=0.0;
+        $wallet->cash_back=0.0;
+        $wallet->save();
+
+        
         event(new Registered($user));
 
         Auth::login($user);
