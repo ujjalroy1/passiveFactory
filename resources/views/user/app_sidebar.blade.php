@@ -8,8 +8,8 @@
                         <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged  w36">
                     </div>
                     <div class="in">
-                        <strong>Sebastian Doe</strong>
-                        <div class="text-muted">4029209</div>
+                        <strong>{{ $user->name }}</strong>
+                        <div class="text-muted">{{ $user->account_id }}</div>
                     </div>
                     <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
                         <ion-icon name="close-outline"></ion-icon>
@@ -20,7 +20,7 @@
                 <div class="sidebar-balance">
                     <div class="listview-title">Balance</div>
                     <div class="in">
-                        <h1 class="amount">$ 2,562.50</h1>
+                        <h1 class="amount">$ {{ $wallet->main_balance }}</h1>
                     </div>
                 </div>
                 <!-- * balance -->
@@ -66,23 +66,23 @@
                 <div class="listview-title mt-1">Menu</div>
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
-                        <a href="index.html" class="item">
+                        <a href="{{ url('home') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="pie-chart-outline"></ion-icon>
                             </div>
                             <div class="in">
-                                Overview
+                               Home
                                 <span class="badge badge-primary">10</span>
                             </div>
                         </a>
                     </li>
                     <li>
-                        <a href="app-pages.html" class="item">
+                        <a href="{{ url('captcha1') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </div>
                             <div class="in">
-                                Pages
+                                Task
                             </div>
                         </a>
                     </li>
@@ -92,7 +92,7 @@
                                 <ion-icon name="apps-outline"></ion-icon>
                             </div>
                             <div class="in">
-                                Components
+                                Package
                             </div>
                         </a>
                     </li>
@@ -102,7 +102,17 @@
                                 <ion-icon name="card-outline"></ion-icon>
                             </div>
                             <div class="in">
-                                My Cards
+                                Team
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="app-cards.html" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="card-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                Collectable
                             </div>
                         </a>
                     </li>
@@ -113,7 +123,7 @@
                 <div class="listview-title mt-1">Others</div>
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
-                        <a href="app-settings.html" class="item">
+                        <a href="{{ asset('user_profile') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="settings-outline"></ion-icon>
                             </div>
@@ -179,35 +189,6 @@
                 </ul>
                 <!-- * others -->
 
-                <!-- send money -->
-                <div class="listview-title mt-1">Send Money</div>
-                <ul class="listview image-listview flush transparent no-line">
-                    <li>
-                        <a href="#" class="item">
-                            <img src="assets/img/sample/avatar/avatar2.jpg" alt="image" class="image">
-                            <div class="in">
-                                <div>Artem Sazonov</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="item">
-                            <img src="assets/img/sample/avatar/avatar4.jpg" alt="image" class="image">
-                            <div class="in">
-                                <div>Sophie Asveld</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="item">
-                            <img src="assets/img/sample/avatar/avatar3.jpg" alt="image" class="image">
-                            <div class="in">
-                                <div>Kobus van de Vegte</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- * send money -->
 
             </div>
         </div>

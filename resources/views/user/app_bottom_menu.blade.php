@@ -29,7 +29,7 @@
             <strong>Collectable</strong>
         </div>
     </a>
-    <a href="{{ asset('fine-app/app-settings.html') }}" class="item">
+    <a href="{{ asset('user_profile') }}" class="item">
         <div class="col">
             <ion-icon name="person-outline"></ion-icon>
             <strong>profile</strong>

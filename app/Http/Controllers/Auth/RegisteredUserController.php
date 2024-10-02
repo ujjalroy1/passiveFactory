@@ -33,12 +33,16 @@ class RegisteredUserController extends Controller
     //generate account id
     private function generateNextAccountId()
     {
-        
-        $maxAccountId = User::max('account_id');
-
-
-        return $maxAccountId ? $maxAccountId + 1 : 10000000;
+        do {
+            $randomAccountId = rand(10000000, 99999999);
+    
+            $exists = User::where('account_id', $randomAccountId)->exists();
+    
+        } while ($exists); 
+    
+        return $randomAccountId;
     }
+    
     public function store(Request $request): RedirectResponse
     {
         $request->validate([

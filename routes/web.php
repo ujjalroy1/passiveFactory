@@ -18,11 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'home'])->middleware(['auth', 'verified']);
 Route::get('/home',[HomeController::class,'home'])->middleware(['auth', 'verified']);
 Route::get('/captcha1',[HomeController::class,'captcha'])->middleware(['auth', 'verified']);
 Route::post('/store_captcha_point',[HomeController::class,'store_captcha_point'])->middleware(['auth', 'verified']);
-
+Route::get('/user_profile',[HomeController::class,'user_profile'])->middleware(['auth', 'verified']);
 
 
 

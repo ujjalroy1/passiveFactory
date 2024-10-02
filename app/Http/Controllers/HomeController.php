@@ -25,25 +25,23 @@ class HomeController extends Controller
     }
     public function home()
     {
-        if(Auth::id())
-        {
-            $user=Auth::user();
-            $account_id=$user->account_id;
-        }
-        else $account_id='';
-        return view('user.index',compact('account_id'));
+        $user=Auth::user();
+        $account_id=$user->account_id;
+        $wallet = Wallet::where('account_id', $account_id)->first();
+            
+           
+        
+      
+        return view('user.index',compact('account_id','user','wallet'));
     }
     public function captcha()
     {
-        if(Auth::id())
-        {
-            $user=Auth::user();
-            $account_id=$user->account_id;
-        }
-        else $account_id='';
+        $user=Auth::user();
+        $account_id=$user->account_id;
+        $wallet = Wallet::where('account_id', $account_id)->first();
 
         $captcha=Captcha::all();
-        return view('user.captcha',compact('captcha','account_id'));
+        return view('user.captcha',compact('captcha','account_id','user','wallet'));
     }
     public function store_captcha_point(Request $request)
     {
@@ -60,11 +58,15 @@ class HomeController extends Controller
         }
         else
         {
-            toastr()->timeOut(5000)->closeButton()->addWarning('Your Captcha is not correct or your wallet is not connect');
+            toastr()->timeOut(5000)->closeButton()->addSuccess('Your Captcha is not correct or your wallet is not connect');
 
         }
          
 
         return redirect()->back();
+    }
+    public function user_profile()
+    {
+        return view('user.setting');
     }
 }
