@@ -100,7 +100,7 @@
     <div class="card">
         <div class="card-title">Title : {{ $title }}</div>
         <div class="card-code">Captcha : {{ $code }}</div>
-        <img src="{{ asset('captcha/cat.jpg') }}" alt="Product Image">
+        <img src="captcha_photo/{{ $captcha[$random]->image }}" alt="Product Image">
         <div class="card-price">Price: {{ $price }}</div>
 
         <!-- Hidden inputs to send $title, $code, and $price -->

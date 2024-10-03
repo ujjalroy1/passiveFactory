@@ -67,6 +67,35 @@ class HomeController extends Controller
     }
     public function user_profile()
     {
-        return view('user.setting');
+        $user=Auth::user();
+        return view('user.setting',compact('user'));
+    }
+    public function update_profile(Request $request)
+    {
+            // Validate the request data
+            $request->validate([
+                     'name' => 'required|string|max:255',
+                      'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
+                           ]);
+
+                 // Fetch authenticated user
+                 $user = Auth::user();
+
+                  // Update user's name and email
+                 $user->name = $request->name;
+                 $user->email = $request->email;
+
+                // Save the changes
+            
+                    $user->save();
+                 
+                   
+ 
+                    
+                   toastr()->timeOut(5000)->closeButton()->addSuccess('Your Profile updated successfully.');
+
+
+               return redirect()->back();
+          
     }
 }

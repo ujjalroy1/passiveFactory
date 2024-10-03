@@ -104,24 +104,35 @@
         </ul>
 
         <div class="listview-title mt-1">Profile Settings</div>
-        <ul class="listview image-listview text inset">
-            <li>
-                <a href="#" class="item">
-                    <div class="in">
-                        <div>Change Username</div>
+        <form class="max-w-lg mx-auto bg-white p-6 shadow-lg rounded-lg" action="{{ url('update_profile') }}" method="POST">
+             @csrf
+         
+            <ul class="list-none">
+                <!-- Name Input -->
+                <li class="mb-4">
+                    <div class="relative">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input name="name" type="text" id="name" value="{{ $user->name }}" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                     </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="item">
-                    <div class="in">
-                        <div>Update E-mail</div>
+                </li>
+        
+                <!-- Email Input -->
+                <li class="mb-4">
+                    <div class="relative">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input name="email" type="email" id="email" value="{{ $user->email }}" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                     </div>
-                </a>
-            </li>
-          
-            
-        </ul>
+                </li>
+        
+              <!-- Submit Button -->
+                 <li class="mt-6">
+                    <div class="relative">
+                          <input type="submit" value="Save Changes" class="w-full bg-green-300 hover:bg-green-400 text-black font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
+                    </div>
+               </li>
+            </ul>
+        </form>
+        
 
         <div class="listview-title mt-1">Security</div>
         <ul class="listview image-listview text mb-2 inset">
