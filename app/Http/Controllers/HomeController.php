@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Captcha;
+use App\Models\Package;
 use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
@@ -98,4 +99,23 @@ class HomeController extends Controller
                return redirect()->back();
           
     }
+ 
+    public function package()
+    {
+        $user=Auth::user();
+        $account_id=$user->account_id;
+        $wallet = Wallet::where('account_id', $account_id)->first();
+
+        $captcha=Captcha::all();
+        $package=Package::all();
+
+         return view('user.package',compact('captcha','account_id','user','wallet','package'));
+
+    }
+
+
+
+
+
+
 }

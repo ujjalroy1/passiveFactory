@@ -57,6 +57,7 @@ class RegisteredUserController extends Controller
             'account_id'=>$accountId,
             'password' => Hash::make($request->password),
         ]);
+        
         //this for mail
         $to=$request->email;
         $sub="Your password";

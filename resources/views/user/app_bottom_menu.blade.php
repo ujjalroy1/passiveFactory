@@ -11,7 +11,7 @@
             <strong>Task</strong>
         </div>
     </a>
-    <a href="{{ url('home') }}" class="item">
+    <a href="{{ url('package') }}" class="item">
         <div class="col">
             <ion-icon name="cart-outline"></ion-icon>
             <strong>Buy Package</strong>

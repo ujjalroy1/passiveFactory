@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Captcha;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -38,4 +39,25 @@ class adminController extends Controller
         return redirect()->back();
 
     }
+   public function add_package()
+   {
+        return view('admin.add_package');
+   }
+  public function upload_package(Request $request)
+  {
+
+       $data=new Package;
+       $data->name=$request->name;
+       $data->price=$request->price;
+       $data->benifit=$request->benifit;
+       $data->save();
+       toastr()->timeOut(5000)->closeButton()->addSuccess('package added successfully.');
+
+      return redirect()->back();
+
+  }
+
+
+
+
 }

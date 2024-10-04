@@ -26,6 +26,9 @@ Route::get('/captcha1',[HomeController::class,'captcha'])->middleware(['auth', '
 Route::post('/store_captcha_point',[HomeController::class,'store_captcha_point'])->middleware(['auth', 'verified']);
 Route::get('/user_profile',[HomeController::class,'user_profile'])->middleware(['auth', 'verified']);
 Route::post('/update_profile',[HomeController::class,'update_profile'])->middleware(['auth', 'verified']);
+Route::get('/package',[HomeController::class,'package'])->middleware(['auth', 'verified']);
+
+
 
 
 
@@ -33,5 +36,7 @@ Route::post('/update_profile',[HomeController::class,'update_profile'])->middlew
 Route::get('admin/home',[adminController::class,'admin_home'])->middleware(['auth', 'admin']);
 Route::get('admin/addCaptcha',[adminController::class,'add_captcha'])->middleware(['auth', 'admin']);
 Route::post('admin/uploadCaptcha',[adminController::class,'upload_captcha'])->middleware(['auth', 'admin']);
+Route::get('admin/addPackage',[adminController::class,'add_package'])->middleware(['auth', 'admin']);
+Route::post('admin/uploadPackage',[adminController::class,'upload_package'])->middleware(['auth', 'admin']);
 
 require __DIR__.'/auth.php';

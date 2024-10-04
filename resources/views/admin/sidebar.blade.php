@@ -13,6 +13,7 @@
       <ul class="list-unstyled">
               <li class="active"><a href="{{ url('admin/home') }}"> <i class="icon-home"></i>Home </a></li>
               <li><a href="{{ url('admin/addCaptcha') }}"> <i class="icon-grid"></i>Add Captcha </a></li>
+              <li><a href="{{ url('admin/addPackage') }}"> <i class="icon-grid"></i>Add Package </a></li>
               <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>product </a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                   <li><a href="{{ url('add_product') }}">Add product</a></li>

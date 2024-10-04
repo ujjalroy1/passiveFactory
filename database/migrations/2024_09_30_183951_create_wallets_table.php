@@ -11,17 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wallets', function (Blueprint $table) {
-            $table->id();
-            $table->string('account_id');
-            $table->decimal('main_balance', 15, 2);
-            $table->decimal('bonus', 15, 2);
-            $table->decimal('refer', 15, 2);
-            $table->decimal('gift', 15, 2);
-            $table->decimal('cash_back', 15, 2);
-            $table->timestamps();
-            $table->foreign('account_id')->references('account_id')->on('users')->onDelete('cascade');
-        });
+        if (!Schema::hasTable('wallets'))
+        {
+            Schema::create('wallets', function (Blueprint $table) {
+                $table->id();
+                $table->string('account_id');
+                $table->decimal('main_balance', 15, 2);
+                $table->decimal('bonus', 15, 2);
+                $table->decimal('refer', 15, 2);
+                $table->decimal('gift', 15, 2);
+                $table->decimal('cash_back', 15, 2);
+                $table->timestamps();
+                $table->foreign('account_id')->references('account_id')->on('users')->onDelete('cascade');
+            });
+
+
+        }
+
     }
 
     /**
