@@ -13,23 +13,20 @@
       <ul class="list-unstyled">
               <li class="active"><a href="{{ url('admin/home') }}"> <i class="icon-home"></i>Home </a></li>
               <li><a href="{{ url('admin/addCaptcha') }}"> <i class="icon-grid"></i>Add Captcha </a></li>
-              <li><a href="{{ url('admin/addPackage') }}"> <i class="icon-grid"></i>Add Package </a></li>
-              <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>product </a>
-                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                  <li><a href="{{ url('add_product') }}">Add product</a></li>
-                  <li><a href="{{ url('view_product') }}">view product</a></li>
-                  
-                </ul>
-              </li>
+
               <li class="active">
-              <a href="{{ url('view_order') }}"> 
-              <i class="icon-home"> </i>Order
-            </a>
-              </li>
-              <li class="active">
-                <a href="{{ url('dashboard') }}"> <i class="icon-list"></i>User view
+                <a href="{{ url('admin/manageCaptcha') }}"> 
+                <i class="icon-home"> </i>Manage Captcha
               </a>
-            </li>
+               </li>
+
+              <li><a href="{{ url('admin/addPackage') }}"> <i class="icon-grid"></i>Add Package </a></li>
+
+              <li class="active">
+                <a href="{{ url('admin/managePackage') }}"> <i class="icon-list"></i>Manage Package
+               </a>
+              </li>
+
             <li class="active">
               <a href="{{ url('message') }}"> <i class="icon-list"></i>Message
             </a>

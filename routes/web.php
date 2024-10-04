@@ -38,5 +38,15 @@ Route::get('admin/addCaptcha',[adminController::class,'add_captcha'])->middlewar
 Route::post('admin/uploadCaptcha',[adminController::class,'upload_captcha'])->middleware(['auth', 'admin']);
 Route::get('admin/addPackage',[adminController::class,'add_package'])->middleware(['auth', 'admin']);
 Route::post('admin/uploadPackage',[adminController::class,'upload_package'])->middleware(['auth', 'admin']);
+Route::get('admin/manageCaptcha',[adminController::class,'manage_captcha'])->middleware(['auth', 'admin']);
+Route::get('admin/editCaptcha/{id}',[adminController::class,'edit_captcha'])->middleware(['auth', 'admin']);
+Route::post('admin/uploadEditCaptcha/{id}',[adminController::class,'upload_edit_captcha'])->middleware(['auth', 'admin']);
+Route::get('admin/managePackage',[adminController::class,'manage_package'])->middleware(['auth', 'admin']);
+Route::get('admin/deleteCaptcha/{id}',[adminController::class,'delete_captcha'])->middleware(['auth', 'admin']);
+Route::get('admin/deletePackage/{id}',[adminController::class,'delete_package'])->middleware(['auth', 'admin']);
+Route::get('admin/editPackage/{id}',[adminController::class,'edit_package'])->middleware(['auth', 'admin']);
+Route::post('admin/uploadEditPackage/{id}',[adminController::class,'upload_edit_package'])->middleware(['auth', 'admin']);
+
+
 
 require __DIR__.'/auth.php';
