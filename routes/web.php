@@ -27,6 +27,10 @@ Route::post('/store_captcha_point',[HomeController::class,'store_captcha_point']
 Route::get('/user_profile',[HomeController::class,'user_profile'])->middleware(['auth', 'verified']);
 Route::post('/update_profile',[HomeController::class,'update_profile'])->middleware(['auth', 'verified']);
 Route::get('/package',[HomeController::class,'package'])->middleware(['auth', 'verified']);
+Route::post('buyPackage/{id}',[HomeController::class,'buy_package'])->middleware(['auth', 'verified']);
+Route::post('buy/next/{id}',[HomeController::class,'buy_next'])->middleware(['auth', 'verified']);
+Route::post('success/buy/{id}',[HomeController::class,'success_buy'])->middleware(['auth', 'verified']);
+
 
 
 

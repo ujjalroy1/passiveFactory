@@ -112,7 +112,61 @@ class HomeController extends Controller
          return view('user.package',compact('captcha','account_id','user','wallet','package'));
 
     }
+    public function buy_package(Request $request,$id)
+    {
 
+         $data=package::find($id);
+         $user=Auth::user();
+         $account_id=$user->account_id;
+         $wallet = Wallet::where('account_id', $account_id)->first();
+         return view('user.buy_method',compact('data','user','account_id','wallet'));
+
+    }
+
+    public function buy_next(Request $request, $id)
+    {
+ 
+        //   dd($request);
+        $data=package::find($id);
+        $user=Auth::user();
+        $account_id=$user->account_id;
+        $wallet = Wallet::where('account_id', $account_id)->first();
+        if($request->paymentMethod==='account')
+        {
+
+              if(((double)$wallet->main_balance - (double)$data->price)<0.0)
+              {
+
+                toastr()->timeOut(5000)->closeButton()->addError('Not sufficient balance to make the purchase.');
+
+                  return redirect('/package');
+              }
+              else
+            return view('user.confirm_buy_package',compact('data','user','account_id','wallet'));
+        }
+        else
+        {
+            toastr()->timeOut(5000)->closeButton()->addError('Sorry we are currently working on it please try another way.');
+
+             
+            return redirect('package');
+        }
+
+    }
+   public function success_buy($id)
+   {
+  
+     $us=Auth::user();
+     $account_id=$us->account_id;
+     $wallet = Wallet::where('account_id', $account_id)->first();
+     $data=package::find($id);
+     
+     $wallet->main_balance=((double)$wallet->main_balance - (double)$data->price);
+     $wallet->save();
+    toastr()->timeOut(5000)->closeButton()->addSuccess('You have successfully purchased'.$data->name.'package.');
+    
+    return redirect('package');
+   }
 
 
 
