@@ -66,6 +66,7 @@ class RegisteredUserController extends Controller
 
         //this for create a wallet
         $wallet=new wallet();
+        $wallet->user_id = $user->id;
         $wallet->account_id=$accountId;
         $wallet->main_balance=0.0;
         $wallet->bonus=0.0;
@@ -73,7 +74,6 @@ class RegisteredUserController extends Controller
         $wallet->gift=0.0;
         $wallet->cash_back=0.0;
         $wallet->save();
-
         
         event(new Registered($user));
 

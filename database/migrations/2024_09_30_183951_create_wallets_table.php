@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('wallets'))
-        {
+        if (!Schema::hasTable('wallets')) {
             Schema::create('wallets', function (Blueprint $table) {
                 $table->id();
+                $table->unsignedBigInteger('user_id');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
                 $table->string('account_id');
                 $table->decimal('main_balance', 15, 2);
                 $table->decimal('bonus', 15, 2);
@@ -22,12 +23,9 @@ return new class extends Migration
                 $table->decimal('gift', 15, 2);
                 $table->decimal('cash_back', 15, 2);
                 $table->timestamps();
-                $table->foreign('account_id')->references('account_id')->on('users')->onDelete('cascade');
+                // $table->foreign('account_id')->references('account_id')->on('users')->onDelete('cascade');
             });
-
-
         }
-
     }
 
     /**
