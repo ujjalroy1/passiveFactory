@@ -163,7 +163,7 @@ class HomeController extends Controller
      
      $wallet->main_balance=((double)$wallet->main_balance - (double)$data->price);
      $wallet->save();
-    toastr()->timeOut(5000)->closeButton()->addSuccess('You have successfully purchased'.$data->name.'package.');
+    toastr()->timeOut(5000)->closeButton()->addSuccess('You have successfully purchased '.$data->name.' package.');
     
     return redirect('package');
    }

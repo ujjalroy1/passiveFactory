@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="pageTitle">
-        <img src="{{ asset('fine-app/assets/img/logo.png') }}" alt="logo" class="logo">
+        <img src="{{ asset('fine-app/assets/img/logo1.jpg') }}" alt="logo" class="logo">
     </div>
     <div class="right">
 
@@ -25,7 +25,7 @@
         @endif
 
         
-        <a href="{{ asset('fine-app/app-notifications.html') }}" class="headerButton">
+        <a href="#" class="headerButton">
             <ion-icon class="icon" name="notifications-outline"></ion-icon>
             <span class="badge badge-danger">4</span>
         </a>

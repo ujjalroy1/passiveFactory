@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div class="item">
-                    <a href="app-cards.html">
+                    <a href="#">
                         <div class="icon-wrapper bg-success">
                             <ion-icon name="card-outline"></ion-icon>
                         </div>

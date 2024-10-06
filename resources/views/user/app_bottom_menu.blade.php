@@ -17,13 +17,13 @@
             <strong>Buy Package</strong>
         </div>
     </a>
-    <a href="{{ asset('fine-app/app-components.html') }}" class="item">
+    <a href="#" class="item">
         <div class="col">
             <ion-icon name="apps-outline"></ion-icon>
             <strong>Team</strong>
         </div>
     </a>
-    <a href="{{ asset('fine-app/app-cards.html') }}" class="item">
+    <a href="#" class="item">
         <div class="col">
             <ion-icon name="card-outline"></ion-icon>
             <strong>Collectable</strong>

@@ -12,20 +12,36 @@
       <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
       <ul class="list-unstyled">
               <li class="active"><a href="{{ url('admin/home') }}"> <i class="icon-home"></i>Home </a></li>
-              <li><a href="{{ url('admin/addCaptcha') }}"> <i class="icon-grid"></i>Add Captcha </a></li>
 
-              <li class="active">
-                <a href="{{ url('admin/manageCaptcha') }}"> 
-                <i class="icon-home"> </i>Manage Captcha
-              </a>
+
+               <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Captcha</a>
+                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+
+                  <li><a href="{{ url('admin/addCaptcha') }}"> Add Captcha </a></li>
+                  <li>
+                    <a href="{{ url('admin/manageCaptcha') }}"> 
+                     Manage Captcha
+                  </a>
+                   </li>
+                  
+                </ul>
                </li>
 
-              <li><a href="{{ url('admin/addPackage') }}"> <i class="icon-grid"></i>Add Package </a></li>
 
-              <li class="active">
-                <a href="{{ url('admin/managePackage') }}"> <i class="icon-list"></i>Manage Package
-               </a>
+               <li><a class="active" href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Package</a>
+                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+
+                  <li><a href="{{ url('admin/addPackage') }}">Add Package </a></li>
+
+                  <li>
+                    <a href="{{ url('admin/managePackage') }}">Manage Package
+                   </a>
+                  </li>
+                  
+                </ul>
               </li>
+
+
 
             <li class="active">
               <a href="{{ url('message') }}"> <i class="icon-list"></i>Message
@@ -33,4 +49,5 @@
           </li>
    
       </ul>
+      
     </nav>

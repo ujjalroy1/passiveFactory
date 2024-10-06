@@ -5,7 +5,7 @@
                 <!-- profile box -->
                 <div class="profileBox pt-2 pb-2">
                     <div class="image-wrapper">
-                        <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged  w36">
+                        <img src="{{ asset('fine-app/assets/img/sample/avatar/avatar1.jpg') }}" alt="image" class="imaged  w36">
                     </div>
                     <div class="in">
                         <strong>{{ $user->name }}</strong>
@@ -27,7 +27,7 @@
 
                 <!-- action group -->
                 <div class="action-group">
-                    <a href="index.html" class="action-button">
+                    <a href="#" class="action-button">
                         <div class="in">
                             <div class="iconbox">
                                 <ion-icon name="add-outline"></ion-icon>
@@ -35,7 +35,7 @@
                             Deposit
                         </div>
                     </a>
-                    <a href="index.html" class="action-button">
+                    <a href="#" class="action-button">
                         <div class="in">
                             <div class="iconbox">
                                 <ion-icon name="arrow-down-outline"></ion-icon>
@@ -43,7 +43,7 @@
                             Withdraw
                         </div>
                     </a>
-                    <a href="index.html" class="action-button">
+                    <a href="#" class="action-button">
                         <div class="in">
                             <div class="iconbox">
                                 <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -51,7 +51,7 @@
                             Send
                         </div>
                     </a>
-                    <a href="app-cards.html" class="action-button">
+                    <a href="#" class="action-button">
                         <div class="in">
                             <div class="iconbox">
                                 <ion-icon name="card-outline"></ion-icon>
@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="app-components.html" class="item">
+                        <a href="{{ url('package') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="apps-outline"></ion-icon>
                             </div>
@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="app-cards.html" class="item">
+                        <a href="#" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="card-outline"></ion-icon>
                             </div>
@@ -107,7 +107,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="app-cards.html" class="item">
+                        <a href="#" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="card-outline"></ion-icon>
                             </div>
@@ -133,7 +133,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="component-messages.html" class="item">
+                        <a href="#" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="chatbubble-outline"></ion-icon>
                             </div>
