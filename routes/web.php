@@ -31,11 +31,6 @@ Route::post('buyPackage/{id}',[HomeController::class,'buy_package'])->middleware
 Route::post('buy/next/{id}',[HomeController::class,'buy_next'])->middleware(['auth', 'verified']);
 Route::post('success/buy/{id}',[HomeController::class,'success_buy'])->middleware(['auth', 'verified']);
 
-
-
-
-
-
 //all routes for admin
 Route::get('admin/home',[adminController::class,'admin_home'])->middleware(['auth', 'admin']);
 Route::get('admin/addCaptcha',[adminController::class,'add_captcha'])->middleware(['auth', 'admin']);
