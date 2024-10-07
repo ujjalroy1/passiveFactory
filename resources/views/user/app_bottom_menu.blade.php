@@ -17,7 +17,7 @@
             <strong>Buy Package</strong>
         </div>
     </a>
-    <a href="#" class="item">
+    <a href="{{ url('myTeam') }}" class="item">
         <div class="col">
             <ion-icon name="apps-outline"></ion-icon>
             <strong>Team</strong>
@@ -29,7 +29,7 @@
             <strong>Collectable</strong>
         </div>
     </a>
-    <a href="{{ asset('user_profile') }}" class="item">
+    <a href="{{ asset('show/boughtPackage') }}" class="item">
         <div class="col">
             <ion-icon name="person-outline"></ion-icon>
             <strong>profile</strong>

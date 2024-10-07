@@ -30,6 +30,15 @@ Route::get('/package',[HomeController::class,'package'])->middleware(['auth', 'v
 Route::post('buyPackage/{id}',[HomeController::class,'buy_package'])->middleware(['auth', 'verified']);
 Route::post('buy/next/{id}',[HomeController::class,'buy_next'])->middleware(['auth', 'verified']);
 Route::post('success/buy/{id}',[HomeController::class,'success_buy'])->middleware(['auth', 'verified']);
+Route::get('show/boughtPackage',[HomeController::class,'show_boughtPackage'])->middleware(['auth', 'verified']);
+Route::get('myTeam',[HomeController::class,'my_team'])->middleware(['auth', 'verified']);
+
+
+
+
+
+
+
 
 //all routes for admin
 Route::get('admin/home',[adminController::class,'admin_home'])->middleware(['auth', 'admin']);

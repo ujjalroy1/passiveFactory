@@ -295,7 +295,8 @@
             </div>
             <div class="col-6">
                 <div class="stat-box">
-                    <div class="title">Refarel</div>
+                    <div class="title">Referral
+                    </div>
                     <div class="value">{{  doubleval($wallet->refer) }}</div>
                 </div>
             </div>

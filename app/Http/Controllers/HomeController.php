@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\boughtPackage;
 use App\Models\Captcha;
 use App\Models\Package;
 use App\Models\User;
@@ -153,6 +154,7 @@ class HomeController extends Controller
         }
 
     }
+    //this is by pressing confirm button
    public function success_buy($id)
    {
   
@@ -163,9 +165,56 @@ class HomeController extends Controller
      
      $wallet->main_balance=((double)$wallet->main_balance - (double)$data->price);
      $wallet->save();
+
+     //create a new package
+     $bp=new boughtPackage();
+     $bp->user_id=$us->id;
+     $bp->account_id=$us->account_id;
+     $bp->type=$data->name;
+     $bp->price=$data->price;
+     $bp->duration='90';
+     $bp->save();
     toastr()->timeOut(5000)->closeButton()->addSuccess('You have successfully purchased '.$data->name.' package.');
     
     return redirect('package');
+   }
+
+   //bought package handeling
+   public function show_boughtPackage()
+   {
+      
+       $user=Auth::user();
+       if($user)
+       {
+        $account_id=$user->account_id;
+        $wallet = Wallet::where('account_id', $account_id)->first();
+
+        
+        $data=boughtPackage::where('account_id',$account_id)->get();
+       }
+       else
+       {
+
+         return redirect()->back();
+       }
+
+       return view('user.show_bought_package',compact('data','wallet','account_id','user'));
+
+
+   }
+
+   public function my_team()
+   {
+
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+
+
+
+
+      return view('user.my_team',compact('user','account_id','wallet'));
+
    }
 
 
