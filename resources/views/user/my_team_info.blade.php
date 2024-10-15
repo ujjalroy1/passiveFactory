@@ -139,21 +139,15 @@
 <div id="container-ujjal">
     <div id="team-box-ujjal">
         <div id="header-ujjal">My Team</div>
+        
+        @if ($id==1)
 
         <div id="level1-ujjal">
             <div class="level-title-ujjal">Level 1</div>
-            <?php
-                $i=0;
-            ?>
+
             @foreach ($level1 as $lv1 )
                 
-               <?php
-               $i++;
-                  if($i>3)
-                  {
-                     break;
-                  }
-               ?>
+
             <form action="{{ url('myTeamDetails',$lv1) }}" method="POST">
                 @csrf
                 <div class="member-row-ujjal">
@@ -168,42 +162,35 @@
             @endforeach
 
 
-            <div class="see-more-ujjal">
 
-                   <a href="{{ url('myTeamInfo',1) }}">
-                    See More
-                   </a>
-
-            </div>
         </div>
+            
+        @endif
+       @if ($id==2)
 
-        <div id="level2-ujjal">
-            <div class="level-title-ujjal">Level 2</div>
-            @foreach ($level2 as $lv2)
+       <div id="level2-ujjal">
+        <div class="level-title-ujjal">Level 2</div>
+        @foreach ($level2 as $lv2)
 
-            <form action="{{ url('myTeamDetails',$lv2) }}" method="POST">
-                @csrf
-                <div class="member-row-ujjal">
-                    <span class="member-name-ujjal">{{ $lv2 }}</span>
-                    <input type="submit" value="Details" class="details-btn-ujjal">
-                </div>
-
-            </form>
-
-                
-            @endforeach
-
-
-            <div class="see-more-ujjal">
-
-                <a href="{{ url('myTeamInfo',2) }}">
-                    See More
-                   </a>
-
-
+        <form action="{{ url('myTeamDetails',$lv2) }}" method="POST">
+            @csrf
+            <div class="member-row-ujjal">
+                <span class="member-name-ujjal">{{ $lv2 }}</span>
+                <input type="submit" value="Details" class="details-btn-ujjal">
             </div>
-        </div>
 
+        </form>
+
+            
+        @endforeach
+
+
+        
+    </div>
+           
+       @endif
+
+        @if ($id==3)
         <div id="level3-ujjal">
             <div class="level-title-ujjal">Level 3</div>
             @foreach ($level3 as $lv3)
@@ -219,32 +206,18 @@
 
                 
             @endforeach
-            <div class="see-more-ujjal">
-                <a href="{{  url('myTeamInfo',3) }}">
-                    See More
-                   </a>
-
-            </div>
+            
 
         </div>
+        
+        @endif
 
-        <div id="referral-section-ujjal">
-            <input type="text" id="referral-link-ujjal" value="{{ $account_id }}" readonly />
-            <button id="copy-btn-ujjal">Copy</button>
-        </div>
+
+
+
     </div>
 </div>
-       <script>
-          document.getElementById('copy-btn-ujjal').addEventListener('click', function() {
-    const referralLink = document.getElementById('referral-link-ujjal');
-    referralLink.select();
-    referralLink.setSelectionRange(0, 99999); // For mobile devices
-    navigator.clipboard.writeText(referralLink.value);
 
-    alert('Referral ID copied: ' + referralLink.value);
-});
-
-       </script>
 
 
     </div>

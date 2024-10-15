@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\boughtPackage;
 use App\Models\Captcha;
 use App\Models\Package;
+use App\Models\team;
 use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
@@ -43,6 +44,11 @@ class HomeController extends Controller
         $wallet = Wallet::where('account_id', $account_id)->first();
 
         $captcha=Captcha::all();
+        if(count($captcha)==0)
+        {
+             return view('user.error_handel_page',compact('captcha','account_id','user','wallet'));
+        }
+        else
         return view('user.captcha',compact('captcha','account_id','user','wallet'));
     }
     public function store_captcha_point(Request $request)
@@ -203,17 +209,45 @@ class HomeController extends Controller
 
    }
 
+   //this is for main page of team
    public function my_team()
    {
 
     $user=Auth::user();
     $account_id=$user->account_id;
     $wallet = Wallet::where('account_id', $account_id)->first();
+    $level1=team::where('parent',$account_id)->pluck('child');
+    $level2=team::whereIn('parent',$level1)->pluck('child');
+    $level3=team::whereIn('parent',$level2)->pluck('child');
+    return view('user.my_team',compact('user','account_id','wallet','level1','level2','level3'));
+
+   }
+
+   //this is for different level team
+   public function myTeamInfo($id)
+   {
+
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+    $level1=team::where('parent',$account_id)->pluck('child');
+    $level2=team::whereIn('parent',$level1)->pluck('child');
+    $level3=team::whereIn('parent',$level2)->pluck('child');
+        
+    return view('user.my_team_info',compact('user','account_id','wallet','level1','level2','level3','id'));
+
+   }
 
 
+   //this is for see details of my team member
+   public function my_team_details(Request $request,$id)
+   {
 
-
-      return view('user.my_team',compact('user','account_id','wallet'));
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+    $package=boughtPackage::where('account_id',$id)->get();
+    return view('user.my_team_details',compact('user','account_id','wallet','package'));
 
    }
 

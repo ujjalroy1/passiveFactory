@@ -17,18 +17,35 @@
 
 
     <!-- App Capsule -->
+ 
+    <div id="appCapsule">
 
-            
-    <div class="text-center p-6 max-w-lg bg-white rounded-lg shadow-lg">
-        <h1 class="text-6xl mb-4">😕</h1>
-        <h2 class="text-3xl font-bold text-gray-800 mb-2">Page Not Working</h2>
-        <p class="text-gray-600 mb-6">This page is currently not working. Please try again later.</p>
-     
-      </div>
+       <h2>packages</h2>
+       <table>
+               <tr>
+                   <th>package Name</th>
+                    <th>price</th>
+                    <th>Start date</th>
+               </tr>
+               @foreach ($package as $pk)
+                
+                 <tr>
+                    <td>{{ $pk->type }}</td>
+                    <td>{{ $pk->price }}</td>
+                    <td>{{ $pk->created_at }}</td>
+                 </tr>
+                   
+               @endforeach
+       </table>
+
+
+
+    </div>
+                
 
     <!-- * App Capsule -->
 
-     
+    
     <!-- App Bottom Menu -->
         @include('user.app_bottom_menu')
     <!-- * App Bottom Menu -->

@@ -32,6 +32,8 @@ Route::post('buy/next/{id}',[HomeController::class,'buy_next'])->middleware(['au
 Route::post('success/buy/{id}',[HomeController::class,'success_buy'])->middleware(['auth', 'verified']);
 Route::get('show/boughtPackage',[HomeController::class,'show_boughtPackage'])->middleware(['auth', 'verified']);
 Route::get('myTeam',[HomeController::class,'my_team'])->middleware(['auth', 'verified']);
+Route::get('myTeamInfo/{id}',[HomeController::class,'myTeamInfo'])->middleware(['auth', 'verified']);
+Route::post('myTeamDetails/{id}',[HomeController::class,'my_team_details'])->middleware(['auth', 'verified']);
 
 
 
