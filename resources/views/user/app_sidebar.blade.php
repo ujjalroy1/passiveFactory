@@ -63,7 +63,7 @@
                 <!-- * action group -->
 
                 <!-- menu -->
-                <div class="listview-title mt-1">Menu</div>
+                <!-- <div class="listview-title mt-1">Menu</div> -->
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
                         <a href="{{ url('home') }}" class="item">
@@ -71,8 +71,8 @@
                                 <ion-icon name="pie-chart-outline"></ion-icon>
                             </div>
                             <div class="in">
-                               Home
-                                <span class="badge badge-primary">10</span>
+                                Home
+                                <!-- <span class="badge badge-primary">10</span> -->
                             </div>
                         </a>
                     </li>
@@ -144,12 +144,11 @@
                     </li>
                     @if (Route::has('login'))
                     @auth
-                        
 
                     <li>
                         <form action="{{ route('logout') }}" method="POST" id="logout-form">
                             @csrf
-                            <button type="submit" class="item" style="background:none;border:none;padding:0;margin:0;cursor:pointer;">
+                            <button type="submit" class="item" style="background:none;border:none;cursor:pointer;">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="log-out-outline"></ion-icon>
                                 </div>
@@ -159,16 +158,15 @@
                             </button>
                         </form>
                     </li>
-                    
                     @else
                     <li>
-                  
+
                         <a href="{{ url('/login') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </div>
                             <div class="in">
-                               Log in
+                                Log in
                             </div>
                         </a>
                     </li>
@@ -183,7 +181,7 @@
                         </a>
                     </li>
                     @endauth
-                        
+
                     @endif
 
                 </ul>
