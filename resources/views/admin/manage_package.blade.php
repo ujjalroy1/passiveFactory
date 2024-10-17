@@ -18,6 +18,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>captcha Price</th>
                             <th>Benefit</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -28,6 +29,7 @@
                         <tr>
                             <td>{{ $pk->name }}</td>
                             <td>{{ $pk->price }}</td>
+                            <td>{{ $pk->captcha_price }}</td>
                             <td>{{ $pk->benifit }}</td>
                             <td>
                                 <a href="{{ url('admin/editPackage',$pk->id) }}" class="btn btn-primary btn-sm">Edit</a>

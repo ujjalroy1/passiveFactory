@@ -26,7 +26,10 @@
                       <label for="price" class="form-label">Package Price</label>
                       <input type="text" class="form-control" id="price" name="price" value="{{ $package->price }}">
                   </div>
-          
+                  <div class="mb-3">
+                    <label for="price" class="form-label">Captcha Price</label>
+                    <input type="text" class="form-control" id="cpprice" name="cpprice" value="{{ $package->captcha_price }}">
+                </div>
                   
                   <div class="mb-3">
                       <label for="benefit" class="form-label">Package Benefit</label>

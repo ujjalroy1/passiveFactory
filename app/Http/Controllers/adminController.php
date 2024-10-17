@@ -24,7 +24,7 @@ class adminController extends Controller
         $data=new Captcha;
         $data->title=$request->title;
         $data->code=$request->captcha;
-        $data->price=$request->price;
+        $data->price='0';
         
         $img=$request->image;
         if($img)
@@ -49,6 +49,7 @@ class adminController extends Controller
        $data=new Package;
        $data->name=$request->name;
        $data->price=$request->price;
+       $data->captcha_price=$request->cpprice;
        $data->benifit=$request->benifit;
        $data->save();
        toastr()->timeOut(5000)->closeButton()->addSuccess('package added successfully.');
@@ -80,7 +81,7 @@ class adminController extends Controller
     }
     $captcha1->title=$request->title;
     $captcha1->code=$request->captcha;
-    $captcha1->price=$request->price;
+    // $captcha1->price=$request->price;
     $img=$request->image;
     if($img)
     {
@@ -138,6 +139,7 @@ class adminController extends Controller
     $data=Package::find($id);
     $data->name=$request->name;
     $data->price=$request->price;
+    $data->captcha_price=$request->cpprice;
     $data->benifit=$request->benifit;
 
     $data->save();

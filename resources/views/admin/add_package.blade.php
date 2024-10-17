@@ -26,6 +26,10 @@
                       <label for="price" class="form-label">Package Price</label>
                       <input type="text" class="form-control" id="price" name="price" placeholder="Enter package price">
                   </div>
+                  <div class="mb-3">
+                    <label for="price" class="form-label">Captcha Price</label>
+                    <input type="text" class="form-control" id="cpprice" name="cpprice" placeholder="Enter captcha price">
+                </div>
           
                   
                   <div class="mb-3">

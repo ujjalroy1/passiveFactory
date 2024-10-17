@@ -32,7 +32,7 @@ class HomeController extends Controller
         $account_id=$user->account_id;
         $wallet = Wallet::where('account_id', $account_id)->first();
             
-           
+        
         
       
         return view('user.index',compact('account_id','user','wallet'));

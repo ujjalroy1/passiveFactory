@@ -20,7 +20,7 @@
                         <tr>
                             <th style="width: 20%;">Title</th>
                             <th style="width: 10%;">Captcha</th>
-                            <th style="width: 10%;">Price</th>
+                            
                             <th style="width: 15%;">Image</th>
                             <th style="width: 15%;">Edit</th>
                             <th style="width: 15%;">Delete</th>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $cap->title }}</td>
                             <td>{{ $cap->code }}</td>
-                            <td>{{ $cap->price }}</td>
+                          
                             <td>
                                 <img src="/captcha_photo/{{ $cap->image }}" class="img-fluid rounded" style="height: 70px; width: 70px;">
                             </td>
