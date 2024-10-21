@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\assignedCaptcha;
 use App\Models\boughtPackage;
 use App\Models\Captcha;
 use App\Models\Package;
@@ -9,7 +10,9 @@ use App\Models\team;
 use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -39,17 +42,73 @@ class HomeController extends Controller
     }
     public function captcha()
     {
+
         $user=Auth::user();
         $account_id=$user->account_id;
         $wallet = Wallet::where('account_id', $account_id)->first();
-
         $captcha=Captcha::all();
+        $boughtPackages = BoughtPackage::where('user_id', $user->id)->get();
+
+        $assignedCaptchas = AssignedCaptcha::where('user_id', $user->id)->get();
+
+        foreach ($assignedCaptchas as $acs) {
+            // Check if the assigned captcha is older than 90 days
+            if (Carbon::parse($acs->start_at)->addDays(90)->lt(now())) {
+               
+                $bps = BoughtPackage::find($acs->bought_package_id);
+                if ($bps) {
+                    $bps->delete();
+                }
+    
+                // Delete the assigned captcha
+                $acs->delete();
+            }
+        }
+         
+        foreach ($assignedCaptchas as $acs) {
+         
+            if (Carbon::parse($acs->expired_at)->lt(now())) {
+             
+                $acs->expired_at = Carbon::parse($acs->expired_at)->addHours(24);
+           
+                $acs->used = 0;
+                
+                $acs->save();
+            }
+        }
+
+
+
+
+
+        $assignedCaptchas1 = AssignedCaptcha::where('user_id', $user->id)->get();
+
+        $presentCaptchaVal = null; 
+        foreach ($assignedCaptchas1 as $acs) {
+            if ($acs->used >= 10) {
+                continue;
+            }
+        
+            $presentCaptchaVal = $acs; 
+            //$acs->used = $acs->used + 1; 
+            $acs->save();
+            break; 
+        }
+        
+       
+        if (is_null($presentCaptchaVal)) {
+            return view('user.error_handel_page', compact('captcha', 'account_id', 'user', 'wallet'));
+        }
+        
+        
+
+
         if(count($captcha)==0)
         {
              return view('user.error_handel_page',compact('captcha','account_id','user','wallet'));
         }
         else
-        return view('user.captcha',compact('captcha','account_id','user','wallet'));
+        return view('user.captcha',compact('captcha','account_id','user','wallet','presentCaptchaVal'));
     }
     public function store_captcha_point(Request $request)
     {
@@ -60,6 +119,15 @@ class HomeController extends Controller
         $data=wallet::where('account_id',$account_id)->first();
         if($data&&($request->user_input_captcha==$request->code))
         {
+            $assigncap = assignedCaptcha::find($request->captchaid);
+           
+            if ($assigncap) { 
+                //dd($assigncap->price);
+                $assigncap->used = $assigncap->used + 1;
+                $assigncap->save();
+            }
+
+
             toastr()->timeOut(5000)->closeButton()->addSuccess('Your Captcha submit successfully');
             $data->main_balance+=floatval($request->price);
             $data->save();
@@ -180,6 +248,19 @@ class HomeController extends Controller
      $bp->price=$data->price;
      $bp->duration='90';
      $bp->save();
+
+     $packageId = $bp->id;
+
+     $ac = new AssignedCaptcha();
+     $ac->user_id = $us->id;
+     $ac->bought_package_id = $packageId; 
+     $ac->type = $data->name;
+     $ac->price = $data->captcha_price; 
+     $ac->used = 0;
+     $ac->start_at = now(); 
+     $ac->expired_at = now()->addHours(24);
+     $ac->save();
+
     toastr()->timeOut(5000)->closeButton()->addSuccess('You have successfully purchased '.$data->name.' package.');
     
     return redirect('package');

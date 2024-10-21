@@ -92,7 +92,7 @@
               
                $title=$captcha[$random]->title;
                $code=$captcha[$random]->code;
-               $price=$captcha[$random]->price;
+               $price=$presentCaptchaVal->price;
          ?>
 
 <form action="{{ url('store_captcha_point') }}" method="POST">
@@ -107,6 +107,7 @@
         <input type="hidden" name="title" value="{{ $title }}">
         <input type="hidden" name="code" value="{{ $code }}">
         <input type="hidden" name="price" value="{{ $price }}">
+        <input type="hidden" name="captchaid" value="{{ $presentCaptchaVal->id }}">
 
         <div class="card-input">
             <input type="text" name="user_input_captcha" placeholder="Enter Captcha" id="quantity-input">
