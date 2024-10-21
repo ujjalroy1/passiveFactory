@@ -21,25 +21,19 @@ Route::middleware('auth')->group(function () {
 
 //all routes for user
 Route::get('/',[HomeController::class,'home'])->middleware(['auth', 'verified']);
-Route::get('/home',[HomeController::class,'home'])->middleware(['auth', 'verified']);
-Route::get('/captcha1',[HomeController::class,'captcha'])->middleware(['auth', 'verified']);
+Route::get('/home',[HomeController::class,'home'])->middleware(['auth', 'verified'])->name('home');
+Route::get('/captcha1',[HomeController::class,'captcha'])->middleware(['auth', 'verified'])->name('captcha1');
 Route::post('/store_captcha_point',[HomeController::class,'store_captcha_point'])->middleware(['auth', 'verified']);
 Route::get('/user_profile',[HomeController::class,'user_profile'])->middleware(['auth', 'verified']);
 Route::post('/update_profile',[HomeController::class,'update_profile'])->middleware(['auth', 'verified']);
-Route::get('/package',[HomeController::class,'package'])->middleware(['auth', 'verified']);
+Route::get('/package',[HomeController::class,'package'])->middleware(['auth', 'verified'])->name('package');
 Route::post('buyPackage/{id}',[HomeController::class,'buy_package'])->middleware(['auth', 'verified']);
 Route::post('buy/next/{id}',[HomeController::class,'buy_next'])->middleware(['auth', 'verified']);
 Route::post('success/buy/{id}',[HomeController::class,'success_buy'])->middleware(['auth', 'verified']);
-Route::get('show/boughtPackage',[HomeController::class,'show_boughtPackage'])->middleware(['auth', 'verified']);
-Route::get('myTeam',[HomeController::class,'my_team'])->middleware(['auth', 'verified']);
+Route::get('show/boughtPackage',[HomeController::class,'show_boughtPackage'])->middleware(['auth', 'verified'])->name('boughtPackage');
+Route::get('myTeam',[HomeController::class,'my_team'])->middleware(['auth', 'verified'])->name('myTeam');
 Route::get('myTeamInfo/{id}',[HomeController::class,'myTeamInfo'])->middleware(['auth', 'verified']);
 Route::post('myTeamDetails/{id}',[HomeController::class,'my_team_details'])->middleware(['auth', 'verified']);
-
-
-
-
-
-
 
 
 //all routes for admin
