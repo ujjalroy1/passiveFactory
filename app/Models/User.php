@@ -57,4 +57,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(AssignedCaptcha::class, 'user_id');
     }
+    public function suggestion()
+    {
+        return $this->hasOne(suggestion::class,'user_id','id');
+    }
 }

@@ -19,8 +19,8 @@
 
                   <li><a href="{{ url('admin/addCaptcha') }}"> Add Captcha </a></li>
                   <li>
-                    <a href="{{ url('admin/manageCaptcha') }}"> 
-                     Manage Captcha
+                    <a href="{{ url('admin/addNFT') }}"> Manage Captcha
+                     
                   </a>
                    </li>
                   
@@ -40,6 +40,23 @@
                   
                 </ul>
               </li>
+
+
+
+              <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>NFT</a>
+                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+
+                  <li><a href="{{ url('admin/addProject') }}"> Add Project </a></li>
+                  <li>
+                    <a href="{{ url('admin/addNFT') }}"> 
+                    Add NFT
+                  </a>
+                   </li>
+                  
+                </ul>
+               </li>
+
+
 
 
 

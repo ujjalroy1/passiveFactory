@@ -23,7 +23,7 @@
             <strong>Team</strong>
         </div>
     </a>
-    <a href="#" class="item">
+    <a href="{{ url('collectable') }}" class="item">
         <div class="col">
             <ion-icon name="card-outline"></ion-icon>
             <strong>Collectable</strong>

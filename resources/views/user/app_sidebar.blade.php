@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="item">
+                        <a href="{{ url('myTeam') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="card-outline"></ion-icon>
                             </div>
@@ -107,7 +107,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="item">
+                        <a href="{{ url('collectable') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="card-outline"></ion-icon>
                             </div>

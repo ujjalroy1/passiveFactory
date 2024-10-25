@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Captcha;
+use App\Models\nft;
 use App\Models\Package;
+use App\Models\project;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -149,6 +151,53 @@ class adminController extends Controller
      
 
   }
+  public function add_project()
+  {
+
+      return view('admin.add_project');
+  }
+  public function store_add_project(Request $request)
+  {
+      $data=new project();
+      $data->project_name=$request->name;
+      $data->save();
+      toastr()->timeOut(5000)->closeButton()->addSuccess('one Project Add successfully.');
+
+      return redirect()->back();
+
+
+  }
+  public function add_nft()
+  {
+
+      $project=project::all();
+      return view('admin.add_nft',compact('project'));
+
+
+  }
+
+  public function store_nft(Request $request)
+  {
+    do {
+        $randomnft = rand(100000, 999999);
+
+        $exists = nft::where('nft_code', $randomnft)->exists();
+
+    } while ($exists); 
+   $nftstore=new nft();
+   $nftstore->nft_code=$randomnft;
+   $nftstore->project_name=$request->project_name;
+   $nftstore->price=$request->price;
+   $nftstore->eroi=$request->eroi;
+   $nftstore->duration=$request->duration;
+   toastr()->timeOut(5000)->closeButton()->addSuccess('one NFT Add successfully.');
+
+   $nftstore->save();
+   return redirect()->back();
+   
+  }
+
+
 
 
 

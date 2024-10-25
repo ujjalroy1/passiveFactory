@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 //all routes for user
 Route::get('/',[HomeController::class,'home'])->middleware(['auth', 'verified']);
 Route::get('/home',[HomeController::class,'home'])->middleware(['auth', 'verified'])->name('home');
@@ -34,6 +35,12 @@ Route::get('show/boughtPackage',[HomeController::class,'show_boughtPackage'])->m
 Route::get('myTeam',[HomeController::class,'my_team'])->middleware(['auth', 'verified'])->name('myTeam');
 Route::get('myTeamInfo/{id}',[HomeController::class,'myTeamInfo'])->middleware(['auth', 'verified']);
 Route::post('myTeamDetails/{id}',[HomeController::class,'my_team_details'])->middleware(['auth', 'verified']);
+Route::get('collectable',[HomeController::class,'collectable'])->middleware(['auth', 'verified'])->name('home');
+
+
+
+
+
 
 
 //all routes for admin
@@ -50,6 +57,12 @@ Route::get('admin/deleteCaptcha/{id}',[adminController::class,'delete_captcha'])
 Route::get('admin/deletePackage/{id}',[adminController::class,'delete_package'])->middleware(['auth', 'admin']);
 Route::get('admin/editPackage/{id}',[adminController::class,'edit_package'])->middleware(['auth', 'admin']);
 Route::post('admin/uploadEditPackage/{id}',[adminController::class,'upload_edit_package'])->middleware(['auth', 'admin']);
+Route::get('admin/addProject',[adminController::class,'add_project'])->middleware(['auth', 'admin']);
+Route::post('admin/storeAddProject',[adminController::class,'store_add_project'])->middleware(['auth', 'admin']);
+Route::get('admin/addNFT',[adminController::class,'add_nft'])->middleware(['auth', 'admin']);
+Route::post('admin/storeNFT',[adminController::class,'store_nft'])->middleware(['auth', 'admin']);
+
+
 
 
 

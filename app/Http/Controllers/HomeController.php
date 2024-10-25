@@ -332,6 +332,20 @@ class HomeController extends Controller
 
    }
 
+   public function collectable()
+   {
+
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+        
+    
+    
+  
+    return view('user.nft_index',compact('account_id','user','wallet'));
+
+   }
+
 
 
 
