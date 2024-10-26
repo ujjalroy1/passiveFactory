@@ -5,16 +5,18 @@
        @include('user.css')
        @include('user.nft_css')
        <style type="text/css">
-        /* Container to hold the entire collection */
+        
         .collections-containerujjal {
           width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 15px;
+          max-height: 500px; 
+          overflow-y: auto; 
         }
     
-        /* Individual collection card styling */
+        
         .collection-cardujjal {
           display: flex;
           flex-direction: column;
@@ -27,14 +29,14 @@
           font-family: Arial, sans-serif;
         }
     
-        /* NFT information styling */
+       
         .nft-codeujjal {
           font-size: 1.2em;
           font-weight: bold;
           margin-bottom: 10px;
         }
     
-        /* Price and currency icon container */
+        
         .collection-price-containerujjal {
           display: flex;
           align-items: center;
@@ -47,7 +49,7 @@
           margin-right: 5px;
         }
     
-        /* Image styling */
+   
         .collection-imageujjal {
           width: 80px;
           height: 80px;
@@ -57,7 +59,7 @@
           margin-bottom: 15px;
         }
     
-        /* Stake Price input field styling */
+       
         .stake-priceujjal {
           width: 100%;
           padding: 8px;
@@ -72,7 +74,7 @@
           cursor: pointer;
         }
     
-        /* Stake button styling */
+       
         .stake-buttonujjal {
           width: 60%;
           background-color: #ff3d3d;
@@ -117,23 +119,34 @@
 
             <div class="collections-containerujjal">
                
-
-              
-                @foreach ($myasset as $ms)
                    <!-- Collection Card -->
+                   @foreach ($myasset as $ms)
+
+
                    <div class="collection-cardujjal">
+                    
                     <div class="nft-codeujjal">PD-{{ $ms->nft_code }}</div>
                     <div class="collection-price-containerujjal">
                       <img class="currency-iconujjal" src="https://img.icons8.com/color/48/000000/ethereum.png" alt="Currency Icon">
                       <span>{{ $ms->price }}</span>
+
+
+
+                      </div>
+                      <form action="{{ url('sellnft',$ms->id) }}" method="POST">
+                        @csrf
+                        
+                      <img class="collection-imageujjal" src="{{ asset('captcha_photo/dragon.jpg') }}" alt="NFT Image">
+                      <input type="text" class="stake-priceujjal" value="{{ $ms->price+$ms->eroi }}" name="price">
+                      <input type="submit" class="stake-buttonujjal" value="Sell On Market">
+                    </form>
                     </div>
-                    <img class="collection-imageujjal" src="{{ asset('captcha_photo/dragon.jpg') }}" alt="NFT Image">
-                    <input type="text" class="stake-priceujjal" value="{{ $ms->price+$ms->eroi }}">
-                    <input type="submit" class="stake-buttonujjal" value="Sell On Market">
-                  </div>
-                    
-                @endforeach
-             
+
+
+
+                     
+                  @endforeach
+               
               </div>
 
 

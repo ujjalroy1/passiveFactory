@@ -40,6 +40,8 @@ Route::post('buyNFT/{id}',[HomeController::class,'buy_nft'])->middleware(['auth'
 Route::get('myasset',[HomeController::class,'myasset'])->middleware(['auth', 'verified'])->name('home');
 Route::get('assetDetails',[HomeController::class,'asset_details'])->middleware(['auth', 'verified'])->name('home');
 Route::get('stake',[HomeController::class,'stake'])->middleware(['auth', 'verified'])->name('home');
+Route::post('sellnft/{id}',[HomeController::class,'sell_nft'])->middleware(['auth', 'verified']);
+Route::get('marketnft',[HomeController::class,'market_nft'])->middleware(['auth', 'verified'])->name('home');
 
 
 

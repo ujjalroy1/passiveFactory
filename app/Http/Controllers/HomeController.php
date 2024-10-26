@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\assignedCaptcha;
 use App\Models\boughtPackage;
 use App\Models\Captcha;
+use App\Models\market;
 use App\Models\myasset;
 use App\Models\nft;
 use App\Models\Package;
@@ -474,6 +475,55 @@ class HomeController extends Controller
   
           return view('user.nft_sell_on_market',compact('account_id','user','wallet','myasset'));
    }
+
+   public function sell_nft(Request $request, $id)
+   {
+       
+       $myasset = Myasset::find($id);
+   
+     
+       if (!$myasset) {
+           toastr()->error('NFT not found.');
+           return redirect()->back();
+       }
+   
+       
+       $market = new Market();
+       $market->user_id = $myasset->user_id;
+       $market->nft_code = $myasset->nft_code;
+       $market->project_name = $myasset->project_name;
+       $market->price = $request->price;
+       $market->eroi = $myasset->eroi;
+       $market->duration = $myasset->duration;
+       
+    
+       if ($market->save()) {
+           
+           $myasset->delete();
+   
+           // Success message
+           toastr()->timeOut(5000)->closeButton()->addSuccess('Successfully added NFT to marketplace.');
+       } else {
+         
+           toastr()->error('Failed to add NFT to marketplace.');
+       }
+   
+       return redirect()->back();
+   }
+
+   public function market_nft()
+   {
+
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+    $market=market::all();   
+    
+    
+  
+    return view('user.nft_market',compact('account_id','user','wallet','market'));
+   }
+   
 
 
 
