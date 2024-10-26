@@ -6,9 +6,10 @@
        @include('user.nft_css')
        <style type="text/css">
    
-    
         .collections-containerujjal {
-          width: 300px;
+          width: 100%;
+          max-width: 320px; /* Set a max width for centering */
+          margin: 0 auto; /* Centers the container */
           text-align: left;
         }
     
@@ -28,6 +29,7 @@
           color: #fff;
           margin-bottom: 10px;
           position: relative;
+          width: 100%; /* Ensure card takes full width of the container */
         }
     
         .collection-infoujjal {
@@ -125,7 +127,7 @@
                   
                   
                      <div>
-                        <a href="{{ url('assetDetails') }}">See all</a>
+                        <a href="{{ url('assetDetails') }}" style="color: #fff">See all</a>
                      </div>
                     
                   </div>

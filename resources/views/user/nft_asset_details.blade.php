@@ -6,10 +6,16 @@
        @include('user.nft_css')
        <style type="text/css">
    
-    
+        .contentujjal {
+          display: flex;
+          justify-content: center; /* Centers the collections container horizontally */
+          padding-top: 20px;
+        }
+
         .collections-containerujjal {
           width: 300px;
           text-align: left;
+          margin: 0 auto; /* Centers the container */
         }
     
         .collections-titleujjal {
@@ -86,7 +92,6 @@
 
        <div id="appCapsule">
 
-
         <div id="mainContainerujjal">
         <div class="containerujjal">
             <!-- Fixed Navigation Bar -->
@@ -98,11 +103,8 @@
                 <div class="collections-containerujjal">
                     <div class="collections-titleujjal">My Collections</div>
                   
-                    <!-- Collection Card 1 -->
-                   
+                    <!-- Collection Cards -->
                     @foreach ($myasset as $ms)
-
-                   
                     <div class="collection-cardujjal">
                         <div class="collection-infoujjal">
                           <span class="nft-codeujjal">PD-{{ $ms->nft_code }}</span>
@@ -113,19 +115,11 @@
                         </div>
                         <img class="collection-imageujjal" src="{{ asset('captcha_photo/dragon.jpg') }}" alt="NFT Image">
                       </div>
-                        
                     @endforeach
-
-                  
-                  
-                  
                     
-                  </div>
-
+                </div>
 
             </div>
-
-
 
         </div>
 

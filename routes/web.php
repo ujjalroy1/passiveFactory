@@ -39,6 +39,7 @@ Route::get('collectable',[HomeController::class,'collectable'])->middleware(['au
 Route::post('buyNFT/{id}',[HomeController::class,'buy_nft'])->middleware(['auth', 'verified']);
 Route::get('myasset',[HomeController::class,'myasset'])->middleware(['auth', 'verified'])->name('home');
 Route::get('assetDetails',[HomeController::class,'asset_details'])->middleware(['auth', 'verified'])->name('home');
+Route::get('stake',[HomeController::class,'stake'])->middleware(['auth', 'verified'])->name('home');
 
 
 

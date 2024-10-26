@@ -393,11 +393,27 @@ class HomeController extends Controller
    public function buy_nft(Request $request,$id)
    {
     $sugges = suggestion::where('user_id',$id)->first();
-    $sugges->status='0';
-    $sugges->save();
+
 
     $nftcode=nft::find($sugges->nft_id);
 
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+    
+    if($wallet->main_balance<$nftcode->price)
+    {
+        
+        toastr()->timeOut(5000)->closeButton()->addError('Sorry You do not have sufficient balance');
+
+        return redirect()->back();
+    }
+    $wallet->main_balance=$wallet->main_balance-$nftcode->price;
+    $wallet->save(); 
+      
+
+    $sugges->status='0';
+    $sugges->save();
 
     $myas=new myasset();
     $myas->user_id=$id;
@@ -444,6 +460,19 @@ class HomeController extends Controller
     return view('user.nft_asset_details',compact('account_id','user','wallet','myasset'));
       
     
+   }
+
+   public function stake()
+   {
+           $user=Auth::user();
+           $account_id=$user->account_id;
+           $wallet = Wallet::where('account_id', $account_id)->first();
+          
+           $myasset=myasset::where('user_id',$user->id)->get();
+    
+    
+  
+          return view('user.nft_sell_on_market',compact('account_id','user','wallet','myasset'));
    }
 
 

@@ -65,4 +65,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(myasset::class,'user_id','id');
     }
+    public function market()
+    {
+         return $this->hasMany(market::class);
+    }
 }
