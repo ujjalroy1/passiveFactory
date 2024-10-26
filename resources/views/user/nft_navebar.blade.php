@@ -1,6 +1,8 @@
 <div class="navbarujjal">
-    <button class="nav-buttonujjal">MY ASSET</button>
-    <button class="nav-buttonujjal">STAKE</button>
-    <button class="nav-buttonujjal">BROWSE</button>
-    <button class="nav-buttonujjal">STAKE HISTORY</button>
+   <a href="{{ url('/myasset') }}" class="nav-buttonujjal">MY ASSET</a>
+   <a href="{{ url('/myasset') }}" class="nav-buttonujjal">STAKE</a>
+   <a href="{{ url('/myasset') }}" class="nav-buttonujjal">BROWSE</a>
+   <a href="{{ url('/myasset') }}" class="nav-buttonujjal">STAKE HISTORY</a>
+    
+
 </div>

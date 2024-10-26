@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\assignedCaptcha;
 use App\Models\boughtPackage;
 use App\Models\Captcha;
+use App\Models\myasset;
+use App\Models\nft;
 use App\Models\Package;
+use App\Models\suggestion;
 use App\Models\team;
 use App\Models\User;
 use App\Models\wallet;
@@ -335,17 +338,113 @@ class HomeController extends Controller
    public function collectable()
    {
 
-    $user=Auth::user();
-    $account_id=$user->account_id;
+    $user = Auth::user();
+    $account_id = $user->account_id;
     $wallet = Wallet::where('account_id', $account_id)->first();
-        
+    
+    $allnft = nft::all();
+    $size = count($allnft);
     
     
-  
-    return view('user.nft_index',compact('account_id','user','wallet'));
+    $sugges = suggestion::where('user_id', $user->id)->first();
+    
+    if (!$sugges) {
+       
+        if ($size > 0) {
+            $randomassign = rand(0, $size - 1);
+            $assigned = $allnft[$randomassign];
+            
+            $newsugg = new suggestion();
+            $newsugg->user_id = $user->id;
+            $newsugg->nft_id = $assigned->id;
+            $newsugg->status = '1';
+            $newsugg->start_at = now();
+            $newsugg->expired_at = now()->addHours(24);
+            $newsugg->save();
+    
+            $sugges = $newsugg; 
+        }
+    }
+    if ($sugges && $sugges->expired_at < now()) {
+        $sugges->status = '1';
+    
+        if ($sugges->expired_at instanceof Carbon) {
+            $sugges->expired_at = $sugges->expired_at->addHours(24);
+        } else {
+            $sugges->expired_at = Carbon::parse($sugges->expired_at)->addHours(24);
+        }
+    
+        $sugges->save();
+    }
+    
+    
+    
+    
+    if ($sugges && $sugges->status == '0') {
+        return view('user.no_nft_today', compact('account_id', 'user', 'wallet'));
+    }
+   
+    $nftinfo = nft::find($sugges->nft_id);
+    return view('user.nft_index', compact('account_id', 'user', 'wallet', 'nftinfo'));
+    
 
    }
 
+   public function buy_nft(Request $request,$id)
+   {
+    $sugges = suggestion::where('user_id',$id)->first();
+    $sugges->status='0';
+    $sugges->save();
+
+    $nftcode=nft::find($sugges->nft_id);
+
+
+    $myas=new myasset();
+    $myas->user_id=$id;
+    $myas->nft_code=$nftcode->nft_code;
+    $myas->project_name=$nftcode->project_name;
+    $myas->price=$nftcode->price;
+    $myas->eroi=$nftcode->eroi;
+    $myas->duration=$nftcode->duration;
+    $myas->start_at=now();
+    $myas->save();
+
+    toastr()->timeOut(5000)->closeButton()->addSuccess('You have successfully purchased');
+
+    return redirect()->back();
+
+
+   }
+
+   public function myasset()
+   {
+
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+    $myasset=myasset::where('user_id',$user->id)->get();   
+    
+    
+  
+    return view('user.nft_my_asset_list',compact('account_id','user','wallet','myasset'));
+      
+    
+
+   }
+
+   public function asset_details()
+   {
+    $user=Auth::user();
+    $account_id=$user->account_id;
+    $wallet = Wallet::where('account_id', $account_id)->first();
+    $myasset=myasset::where('user_id',$user->id)->get();   
+    
+    
+  
+    return view('user.nft_asset_details',compact('account_id','user','wallet','myasset'));
+      
+    
+   }
 
 
 

@@ -61,4 +61,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(suggestion::class,'user_id','id');
     }
+    public function myasset()
+    {
+        return $this->hasMany(myasset::class,'user_id','id');
+    }
 }

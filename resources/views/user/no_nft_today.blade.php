@@ -29,34 +29,8 @@
     
             <!-- Scrollable Content Section -->
             <div class="contentujjal">
-                <div class="suggestions-headerujjal">
-                    <p class="textujjal">SUGGESTIONS</p>
-                    <p class="idujjal">PD-{{ $nftinfo->nft_code }}</p>
-                    <div class="priceujjal">
-                        <p>Price : {{ $nftinfo->price }}</p>
-                    </div>
-                </div>
-            
-                <!-- NFT Image -->
-                <div class="nft-imageujjal">
-                    <img src="{{ asset('captcha_photo/dragon.jpg') }}" alt="NFT Image" height="350px" width="100px">
-                </div>
-            
-                <!-- Information Section -->
-                <form action="{{ url('buyNFT',$user->id) }}" method="POST"> 
-                  @csrf
 
-                  <div class="info-sectionujjal">
-                    <p>E ROI - {{ $nftinfo->eroi }}</p>
-                    <p>STAKE DURATION</p>
-                    <p>{{ $nftinfo->duration }} DAYS</p>
-                    {{-- <button class="buy-nowujjal">BUY NOW</button> --}}
-                    <input type="submit" value="BUY NOW" class="buy-nowujjal">
-                </div>
-
-
-                </form>
-
+                  <p>You already bought your nft for today please wait a day</p>
             </div>
 
 
