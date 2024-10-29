@@ -21,7 +21,7 @@
             
     <div class="text-center p-6 max-w-lg bg-white rounded-lg shadow-lg">
         <h1 class="text-6xl mb-4">😕</h1>
-        <h2 class="text-3xl font-bold text-gray-800 mb-2">Page Not Working</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-2">No Captcha Available</h2>
         <p class="text-gray-600 mb-6">This page is currently not working. Please try again later.</p>
      
       </div>

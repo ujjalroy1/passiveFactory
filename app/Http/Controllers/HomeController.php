@@ -384,8 +384,9 @@ class HomeController extends Controller
     if ($sugges && $sugges->status == '0') {
         return view('user.no_nft_today', compact('account_id', 'user', 'wallet'));
     }
-   
-    $nftinfo = nft::find($sugges->nft_id);
+    // dd($sugges);
+    $nftinfo = isset($sugges->nft_id) ? nft::find($sugges->nft_id) : null;
+    // $nftinfo = nft::find($sugges->nft_id);
     return view('user.nft_index', compact('account_id', 'user', 'wallet', 'nftinfo'));
     
 

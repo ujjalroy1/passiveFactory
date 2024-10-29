@@ -83,8 +83,8 @@ select:focus {
                     @csrf
                     <div class="form-group">
                         <label for="project_name">Select Project Name</label>
-                        <select name="project_name" id="project_name" required>
-                            <option disabled selected>Select any option</option>
+                        <select class="form-control" name="project_name" id="project_name" required>
+                            <option value="">Select any option</option>
                             @foreach ($project as $p)
                                 <option value="{{ $p->project_name }}">{{ $p->project_name }}</option>
                             @endforeach
@@ -93,21 +93,22 @@ select:focus {
         
                     <div class="form-group">
                         <label for="price">Enter Price</label>
-                        <input type="text" name="price" id="price" placeholder="Enter price" required>
+                        <input class="form-control" type="text" name="price" id="price" placeholder="Enter price" required>
                     </div>
         
                     <div class="form-group">
                         <label for="eroi">Enter EROI</label>
-                        <input type="text" name="eroi" id="eroi" placeholder="Enter EROI" required>
+                        <input class="form-control" type="text" name="eroi" id="eroi" placeholder="Enter EROI" required>
                     </div>
         
                     <div class="form-group">
-                        <label for="duration">Enter Duration</label>
-                        <input type="text" name="duration" id="duration" placeholder="Enter duration" required>
+                        <label for="duration">Enter Duration (Days)</label>
+                        <input class="form-control" type="text" name="duration" id="duration" placeholder="Enter duration in days" required>
                     </div>
         
                     <div class="form-group">
                         <input type="submit" value="Add" class="submit-btn">
+                        <!-- <button type="submit" class="form-control"> -->
                     </div>
                 </form>
             </div>
