@@ -7,7 +7,6 @@
 </head>
 
 <body>
-
     <!-- loader -->
     @include('user.loader')
     <!-- * loader -->
@@ -18,64 +17,49 @@
 
 
     <!-- App Capsule -->
-
     <div id="appCapsule">
+        @include('user.nft_navebar')
 
-
-        <div id="mainContainerujjal">
-            <div class="containerujjal">
-                <!-- Fixed Navigation Bar -->
-                @include('user.nft_navebar')
-
-                @if($nftinfo != null)
-                <!-- Scrollable Content Section -->
-                <div class="contentujjal">
-                    <div class="suggestions-headerujjal">
-                        <p class="textujjal">SUGGESTIONS</p>
-                        @if(isset($nftinfo->nft_code))
-                        <p class="idujjal">PD-{{ $nftinfo->nft_code }}</p>
-                        @endif
-                        <div class="priceujjal">
-                            @if(isset($nftinfo->price))
-                            <p>Price : {{ $nftinfo->price }}</p>
-                            @endif
-                        </div>
-                    </div>
-
-                    <!-- NFT Image -->
-                    <div class="nft-imageujjal">
-                        <img src="{{ asset('captcha_photo/dragon.jpg') }}" alt="NFT Image" height="350px" width="100px">
-                    </div>
-
-                    <!-- Information Section -->
-                    <form action="{{ url('buyNFT',$user->id) }}" method="POST">
-                        @csrf
-
-                        <div class="info-sectionujjal">
-                            @if(isset($nftinfo->eroi))
-                            <p>E ROI - {{ $nftinfo->eroi }}</p>
-                            @endif
-                            <p>STAKE DURATION</p>
-                            @if(isset($nftinfo->duration))
-                            <p>{{ $nftinfo->duration }} DAYS</p>
-                            @endif
-                            {{-- <button class="buy-nowujjal">BUY NOW</button> --}}
-                            <input type="submit" value="BUY NOW" class="buy-nowujjal">
-                        </div>
-                    </form>
-                </div>
+        @if($nftinfo != null)
+        <div class="contentujjal">
+            <div class="suggestions-headerujjal">
+                <p class="textujjal">SUGGESTIONS</p>
+                @if(isset($nftinfo->nft_code))
+                <p class="idujjal">PD-{{ $nftinfo->nft_code }}</p>
                 @endif
-
-                @if($nftinfo == null)
-                <div>
-                    <h1>NFT is Null</h1>
+                <div class="priceujjal">
+                    @if(isset($nftinfo->price))
+                    <p>Price : {{ $nftinfo->price }}</p>
+                    @endif
                 </div>
-                @endif
             </div>
 
-        </div>
-    </div>
+            <div class="nft-imageujjal">
+                <img src="{{ asset('captcha_photo/dragon.jpg') }}" alt="NFT Image" height="250px" width="100px">
+            </div>
 
+            <form action="{{ url('buyNFT',$user->id) }}" method="POST">
+                @csrf
+
+                <div class="info-sectionujjal">
+                    @if(isset($nftinfo->eroi))
+                    <p>E ROI - {{ $nftinfo->eroi }}</p>
+                    @endif
+                    <p>STAKE DURATION</p>
+                    @if(isset($nftinfo->duration))
+                    <p>{{ $nftinfo->duration }} DAYS</p>
+                    @endif
+                    <!-- <button class="buy-nowujjal">BUY NOW</button> -->
+                    <input type="submit" value="BUY NOW" class="buy-nowujjal">
+                </div>
+            </form>
+        </div>
+        @else
+        <div>
+            <h1>NFT is Null</h1>
+        </div>
+        @endif
+    </div>
 
     <!-- * App Capsule -->
 
@@ -86,15 +70,11 @@
 
     <!-- App Sidebar -->
     @include('user.app_sidebar')
-
     <!-- * App Sidebar -->
-
-
 
     <!-- iOS Add to Home Action Sheet -->
     @include('user.ios')
     <!-- * iOS Add to Home Action Sheet -->
-
 
     <!-- Android Add to Home Action Sheet -->
     @include('user.android')
@@ -102,9 +82,7 @@
 
     @include('user.cookie')
 
-
     @include('user.jsfile')
-
 
 </body>
 

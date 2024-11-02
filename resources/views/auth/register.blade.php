@@ -1,54 +1,54 @@
 {{-- <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
-        @csrf
+@csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+<!-- Name -->
+<div>
+    <x-input-label for="name" :value="__('Name')" />
+    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+</div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+<!-- Email Address -->
+<div class="mt-4">
+    <x-input-label for="email" :value="__('Email')" />
+    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+<!-- Password -->
+<div class="mt-4">
+    <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+    <x-text-input id="password" class="block mt-1 w-full"
+        type="password"
+        name="password"
+        required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+</div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+<!-- Confirm Password -->
+<div class="mt-4">
+    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+    <x-text-input id="password_confirmation" class="block mt-1 w-full"
+        type="password"
+        name="password_confirmation" required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+</div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+<div class="flex items-center justify-end mt-4">
+    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+        {{ __('Already registered?') }}
+    </a>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
+    <x-primary-button class="ms-4">
+        {{ __('Register') }}
+    </x-primary-button>
+</div>
+</form>
 </x-guest-layout> --}}
 
 
@@ -106,39 +106,12 @@
         <div class="section mb-5 p-2">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-
-
-                
-
-
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="name">name</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name" name="name">
-                                        <i class="clear-input">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="email">E-mail</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Your e-mail" name="email">
-                                        <i class="clear-input">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </i>
-                                    </div>
-                                </div>
-
+                <div class="card">
+                    <div class="card-body">
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                
-                                <input type="password" class="form-control" id="password" autocomplete="off"
-                                    placeholder="Your password" name="password" style="display: none">
-                                   
+                                <label class="label" for="name">name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" name="name" required>
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -147,7 +120,46 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                               
+                                <label class="label" for="email">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your e-mail" name="email" required>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="mobile">Mobile</label>
+                                <input type="mobile" class="form-control" id="mobile" placeholder="Your Mobile" name="mobile" required>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="ref_code">Referal Code</label>
+                                <input type="ref_code" class="form-control" id="ref_code" placeholder="Your Referal Code" name="ref_code">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <input type="password" class="form-control" id="password" autocomplete="off"
+                                    placeholder="Your password" name="password" style="display: none">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
                                 <input type="password" class="form-control" id="password_confirmation" autocomplete="off"
                                     placeholder="Type password again" name="password_confirmation" style="display: none">
                                 <i class="clear-input">
@@ -155,18 +167,12 @@
                                 </i>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
-
-
 
                 <div class="form-button-group transparent">
                     <button type="submit" class="btn btn-primary btn-block btn-lg" id="generate-password">Register</button>
                 </div>
-
             </form>
         </div>
 
@@ -178,7 +184,6 @@
 
     <!-- * Terms Modal -->
 
-
     <!-- ========= JS Files =========  -->
     <!-- Bootstrap -->
     <script src="{{ asset('fine-app/assets/js/lib/bootstrap.bundle.min.js') }}"></script>
@@ -188,46 +193,40 @@
     <script src="{{ asset('finr-app/assets/js/plugins/splide/splide.min.js') }}"></script>
     <!-- Base Js File -->
     <script src="{{ asset('fine-app/assets/js/base.js') }}"></script>
-
-
     <!-- Add a button to trigger password generation -->
 
+    <script>
+        // Function to generate a strong password
+        function generateStrongPassword(length = 16) {
+            const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+            const numbers = '0123456789';
+            const symbols = '!@#$%^&*()_+-=[]{}|;:,<.>?/';
 
-<script>
-    // Function to generate a strong password
-    function generateStrongPassword(length = 16) {
-        const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
-        const numbers = '0123456789';
-        const symbols = '!@#$%^&*()_+-=[]{}|;:,<.>?/';
-        
-        const allCharacters = upperCase + lowerCase + numbers + symbols;
+            const allCharacters = upperCase + lowerCase + numbers + symbols;
 
-        let password = '';
-        for (let i = 0; i < length; i++) {
-            password += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
+            }
+
+            return password;
         }
 
-        return password;
-    }
+        // Function to fill both password fields with the generated password
+        function setGeneratedPassword() {
+            const password = generateStrongPassword(); // Generate a strong password
 
-    // Function to fill both password fields with the generated password
-    function setGeneratedPassword() {
-        const password = generateStrongPassword(); // Generate a strong password
+            // Set the generated password to both fields
+            document.getElementById('password').value = password;
+            document.getElementById('password_confirmation').value = password;
+        }
 
-        // Set the generated password to both fields
-        document.getElementById('password').value = password;
-        document.getElementById('password_confirmation').value = password;
-    }
-
-    // Event listener for the button click to generate the password
-    document.getElementById('generate-password').addEventListener('click', function() {
-        setGeneratedPassword();
-    });
-</script>
-
-
-
+        // Event listener for the button click to generate the password
+        document.getElementById('generate-password').addEventListener('click', function() {
+            setGeneratedPassword();
+        });
+    </script>
 </body>
 
 </html>

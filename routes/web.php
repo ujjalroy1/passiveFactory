@@ -44,11 +44,6 @@ Route::post('sellnft/{id}',[HomeController::class,'sell_nft'])->middleware(['aut
 Route::get('marketnft',[HomeController::class,'market_nft'])->middleware(['auth', 'verified'])->name('home');
 
 
-
-
-
-
-
 //all routes for admin
 Route::get('admin/home',[adminController::class,'admin_home'])->middleware(['auth', 'admin']);
 Route::get('admin/addCaptcha',[adminController::class,'add_captcha'])->middleware(['auth', 'admin']);
@@ -67,9 +62,6 @@ Route::get('admin/addProject',[adminController::class,'add_project'])->middlewar
 Route::post('admin/storeAddProject',[adminController::class,'store_add_project'])->middleware(['auth', 'admin']);
 Route::get('admin/addNFT',[adminController::class,'add_nft'])->middleware(['auth', 'admin']);
 Route::post('admin/storeNFT',[adminController::class,'store_nft'])->middleware(['auth', 'admin']);
-
-
-
 
 
 require __DIR__.'/auth.php';

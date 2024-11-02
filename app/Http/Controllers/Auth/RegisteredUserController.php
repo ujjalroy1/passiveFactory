@@ -48,13 +48,16 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'mobile' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
         $accountId = $this->generateNextAccountId();//call the account_id
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'account_id'=>$accountId,
+            'mobile' => $request->mobile,
+            'referral_code' => $request->ref_code,
+            'account_id' => $accountId,
             'password' => Hash::make($request->password),
         ]);
         
