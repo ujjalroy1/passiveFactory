@@ -19,7 +19,6 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    //
     public function index()
     {
         if (Auth::id()) {
@@ -65,11 +64,8 @@ class HomeController extends Controller
         foreach ($assignedCaptchas as $acs) {
 
             if (Carbon::parse($acs->expired_at)->lt(now())) {
-
                 $acs->expired_at = Carbon::parse($acs->expired_at)->addHours(24);
-
                 $acs->used = 0;
-
                 $acs->save();
             }
         }
@@ -112,8 +108,6 @@ class HomeController extends Controller
                 $assigncap->used = $assigncap->used + 1;
                 $assigncap->save();
             }
-
-
             toastr()->timeOut(5000)->closeButton()->addSuccess('Your Captcha submit successfully');
             $data->main_balance += floatval($request->price);
             $data->save();
@@ -174,8 +168,7 @@ class HomeController extends Controller
 
     public function buy_next(Request $request, $id)
     {
-
-        //   dd($request);
+        // dd($request);
         $data = package::find($id);
         $user = Auth::user();
         $account_id = $user->account_id;
@@ -197,7 +190,6 @@ class HomeController extends Controller
     //this is by pressing confirm button
     public function success_buy($id)
     {
-
         $us = Auth::user();
         $account_id = $us->account_id;
         $wallet = Wallet::where('account_id', $account_id)->first();
@@ -302,7 +294,6 @@ class HomeController extends Controller
             if ($size > 0) {
                 $randomassign = rand(0, $size - 1);
                 $assigned = $allnft[$randomassign];
-
                 $newsugg = new suggestion();
                 $newsugg->user_id = $user->id;
                 $newsugg->nft_id = $assigned->id;
@@ -310,7 +301,6 @@ class HomeController extends Controller
                 $newsugg->start_at = now();
                 $newsugg->expired_at = now()->addHours(24);
                 $newsugg->save();
-
                 $sugges = $newsugg;
             }
         }
@@ -368,7 +358,6 @@ class HomeController extends Controller
         $myas->save();
 
         toastr()->timeOut(5000)->closeButton()->addSuccess('You have successfully purchased');
-
         return redirect()->back();
     }
 
@@ -425,7 +414,6 @@ class HomeController extends Controller
             // Success message
             toastr()->timeOut(5000)->closeButton()->addSuccess('Successfully added NFT to marketplace.');
         } else {
-
             toastr()->error('Failed to add NFT to marketplace.');
         }
 

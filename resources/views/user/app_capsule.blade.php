@@ -336,7 +336,7 @@
         <div class="footer-title">
             Copyright © Finapp 2024. All Rights Reserved.
         </div>
-      Developed By Ujjal roy
+      Developed By PassiveFactory
     </div>
     <!-- * app footer -->
 

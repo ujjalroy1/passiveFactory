@@ -104,11 +104,9 @@
         </ul>
 
         <div class="listview-title mt-1">Profile Settings</div>
-        <form class="max-w-lg mx-auto bg-white p-6 shadow-lg rounded-lg" action="{{ url('update_profile') }}" method="POST">
-             @csrf
-         
+        <!-- <form class="max-w-lg mx-auto bg-white p-6 shadow-lg rounded-lg" action="{{ url('update_profile') }}" method="POST">
+            @csrf
             <ul class="list-none">
-                <!-- Name Input -->
                 <li class="mb-4">
                     <div class="relative">
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
@@ -116,7 +114,6 @@
                     </div>
                 </li>
         
-                <!-- Email Input -->
                 <li class="mb-4">
                     <div class="relative">
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
@@ -124,14 +121,13 @@
                     </div>
                 </li>
         
-              <!-- Submit Button -->
                  <li class="mt-6">
                     <div class="relative">
                           <input type="submit" value="Save Changes" class="w-full bg-green-300 hover:bg-green-400 text-black font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
                     </div>
                </li>
             </ul>
-        </form>
+        </form> -->
         
 
         <div class="listview-title mt-1">Security</div>

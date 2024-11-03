@@ -7,7 +7,7 @@
     </a>
     <a href="{{ url('captcha1') }}" class="item {{ request()->is('captcha1') ? 'active' : ''}}">
         <div class="col">
-            <ion-icon name="people-outline"></ion-icon>
+            <ion-icon name="apps-outline"></ion-icon>
             <strong>Task</strong>
         </div>
     </a>
@@ -17,22 +17,28 @@
             <strong>Buy Package</strong>
         </div>
     </a>
-    <a href="{{ url('myTeam') }}" class="item {{ request()->is('myTeam') ? 'active' : ''}}">
+    <a href="{{ url('boughtPackage') }}" class="item {{ request()->is('boughtPackage') ? 'active' : ''}}">
         <div class="col">
             <ion-icon name="apps-outline"></ion-icon>
+            <strong>Packages</strong>
+        </div>
+    </a>
+    <a href="{{ url('myTeam') }}" class="item {{ request()->is('myTeam') ? 'active' : ''}}">
+        <div class="col">
+            <ion-icon name="people-outline"></ion-icon>
             <strong>Team</strong>
         </div>
     </a>
-    <a href="{{ url('collectable') }}" class="item">
+    <a href="{{ url('collectable') }}" class="item {{ request()->is('collectable') ? 'active' : ''}}">
         <div class="col">
             <ion-icon name="card-outline"></ion-icon>
             <strong>Collectable</strong>
         </div>
     </a>
-    <a href="{{ asset('show/boughtPackage') }}" class="item {{ request()->is('boughtPackage') ? 'active' : ''}}">
+    <a href="{{ url('profile') }}" class="item {{ request()->is('profile') ? 'active' : ''}}">
         <div class="col">
             <ion-icon name="person-outline"></ion-icon>
-            <strong>profile</strong>
+            <strong>Profile</strong>
         </div>
     </a>
 </div>

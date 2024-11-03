@@ -163,7 +163,7 @@
 
     <!-- App Capsule -->
     <div id="appCapsule">
-        <div id="mainContainerujjal">
+        <!-- <div id="mainContainerujjal"> -->
             <div class="containerujjal">
                 <!-- Fixed Navigation Bar -->
                 @include('user.nft_navebar')
@@ -194,7 +194,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
     <!-- * App Capsule -->
 

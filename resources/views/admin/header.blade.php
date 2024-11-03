@@ -14,7 +14,7 @@
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
           <!-- Navbar Header--><a href="{{ url('admin/dashboard') }}" class="navbar-brand">
-            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Ujjal's </strong><strong>Admin</strong></div>
+            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">PA</strong> <strong>Admin</strong></div>
             <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
           <!-- Sidebar Toggle Btn-->
           <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>

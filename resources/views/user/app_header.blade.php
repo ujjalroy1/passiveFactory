@@ -27,9 +27,9 @@
         
         <a href="#" class="headerButton">
             <ion-icon class="icon" name="notifications-outline"></ion-icon>
-            <span class="badge badge-danger">4</span>
+            <span class="badge badge-danger"></span>
         </a>
-        <a href="{{ asset('user_profile') }}" class="headerButton">
+        <a href="{{ asset('settings') }}" class="headerButton">
             <img src="{{ asset('fine-app/assets/img/sample/avatar/avatar1.jpg') }}" alt="image" class="imaged w32">
             
         </a>
