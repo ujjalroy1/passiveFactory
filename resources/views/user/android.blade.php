@@ -14,7 +14,7 @@ role="dialog">
                     <img src="{{ asset('fine-app/assets/img/icon/192x192.png') }}" alt="image" class="imaged w64 mb-2">
                 </div>
                 <div>
-                    Install <strong>Finapp</strong> on your Android's home screen.
+                    Install <strong>Passive Factory</strong> on your Android's home screen.
                 </div>
                 <div>
                     Tap <ion-icon name="ellipsis-vertical"></ion-icon> and Add to homescreen.

@@ -334,9 +334,9 @@
     <!-- app footer -->
     <div class="appFooter">
         <div class="footer-title">
-            Copyright © Finapp 2024. All Rights Reserved.
+            Copyright © Passive Factory 2024. All Rights Reserved.
         </div>
-      Developed By PassiveFactory
+      Developed By Passive Factory
     </div>
     <!-- * app footer -->
 
