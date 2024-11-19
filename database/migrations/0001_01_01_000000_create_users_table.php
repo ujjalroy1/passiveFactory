@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('mobile')->unique();
+            $table->string('mobile');
             $table->string('referral_code')->nullable();
             $table->string('account_id')->nullable();
             $table->string('user_type')->default('user');

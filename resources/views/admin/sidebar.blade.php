@@ -14,13 +14,13 @@
       <li class="active"><a href="{{ url('admin/home') }}"> <i class="icon-home"></i>Home </a></li>
 
 
-      <li><a href="#captcha" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Captcha</a>
+      <li><a href="#captcha" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Header Controll</a>
         <ul id="captcha" class="collapse list-unstyled ">
 
-          <li><a href="{{ url('admin/addCaptcha') }}"> Add Captcha </a></li>
+          <li><a href="{{ url('admin/slogan') }}"> slogan</a></li>
           <li>
-            <a href="{{ url('admin/addNFT') }}"> Manage Captcha
-
+            <a href="{{ url('admin/logo') }}"> 
+                   logo
             </a>
           </li>
 

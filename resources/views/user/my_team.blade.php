@@ -138,7 +138,7 @@
 
 <div id="container-ujjal">
     <div id="team-box-ujjal">
-        <div id="header-ujjal">My Team</div>
+        <div id="header-ujjal">GENERATION</div>
 
         <div id="level1-ujjal">
             <div class="level-title-ujjal">Level 1</div>

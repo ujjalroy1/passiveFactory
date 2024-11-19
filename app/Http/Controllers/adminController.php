@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Captcha;
+use App\Models\headerControl;
 use App\Models\nft;
 use App\Models\Package;
 use App\Models\project;
@@ -196,8 +197,31 @@ class adminController extends Controller
    return redirect()->back();
    
   }
+  public function slogan()
+  {
+
+    $header_data = headerControl::first();
 
 
+    return view('admin.slogan',compact('header_data'));
+  }
+
+  public function update_slogan(Request $request)
+  {
+      
+            $header_data = headerControl::first();
+            $header_data->slogan=$request->slogan;
+            $header_data->font_style=$request->font_style;
+            $header_data->save();
+            toastr()->timeOut(5000)->closeButton()->addSuccess('Updated.');
+
+          return redirect()->back();
+  }
+  public function logo()
+  {
+
+      return view('admin.logo');
+  }
 
 
 

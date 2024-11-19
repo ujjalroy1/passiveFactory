@@ -123,7 +123,7 @@
                 <div class="listview-title mt-1">Others</div>
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
-                        <a href="{{ asset('settings') }}" class="item">
+                        <a href="{{ url('profile') }}" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="settings-outline"></ion-icon>
                             </div>

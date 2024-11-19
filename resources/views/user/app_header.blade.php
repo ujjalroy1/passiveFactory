@@ -5,9 +5,13 @@
         </a>
     </div>
     <div class="pageTitle">
-        <img src="{{ asset('fine-app/assets/img/logo1.jpg') }}" alt="logo" class="logo">
+        <img src="{{ asset('fine-app/assets/img/logo1.jpg') }}" alt="logo" class="logo" style="display: inline-block; vertical-align: middle; width: 40px; height: auto;">
+        <p style="display: inline-block; vertical-align: middle; margin: 0 0 0 10px; font-family: ;">NFT kino ay koro</p>
+        
+        
     </div>
     <div class="right">
+
 
         @if (Route::has('login'))
         @auth

@@ -166,7 +166,7 @@
         <!-- <div id="mainContainerujjal"> -->
             <div class="containerujjal">
                 <!-- Fixed Navigation Bar -->
-                @include('user.nft_navebar')
+                {{-- @include('user.nft_navebar') --}}
 
                 <!-- Scrollable Content Section -->
                 <div class="scrollable-content">

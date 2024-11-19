@@ -17,8 +17,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
+
 class HomeController extends Controller
 {
+
+
+
     public function index()
     {
         if (Auth::id()) {
@@ -429,4 +433,31 @@ class HomeController extends Controller
 
         return view('user.nft_market', compact('account_id', 'user', 'wallet', 'market'));
     }
+
+    public function wallet_info()
+    {
+
+        $user = Auth::user();
+        $account_id = $user->account_id;
+        $wallet = Wallet::where('account_id', $account_id)->first();
+
+
+        return view('user.wallet_information', compact('account_id', 'user', 'wallet'));
+    }
+
+
+    public function nft_collection()
+    {
+
+        $user = Auth::user();
+        $account_id = $user->account_id;
+        $wallet = Wallet::where('account_id', $account_id)->first();
+
+        return view('user.nft_collection', compact('account_id', 'user', 'wallet'));
+    }
+
+
+
+
+
 }
