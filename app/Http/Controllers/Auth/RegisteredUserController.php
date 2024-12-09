@@ -35,23 +35,21 @@ class RegisteredUserController extends Controller
     {
         do {
             $randomAccountId = rand(10000000, 99999999);
-    
             $exists = User::where('account_id', $randomAccountId)->exists();
-    
-        } while ($exists); 
-    
+        } while ($exists);
+
         return $randomAccountId;
     }
-    
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'mobile' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $accountId = $this->generateNextAccountId();//call the account_id
+        $accountId = $this->generateNextAccountId(); //call the account_id
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -60,24 +58,24 @@ class RegisteredUserController extends Controller
             'account_id' => $accountId,
             'password' => Hash::make($request->password),
         ]);
-        
+
         //this for mail
-        $to=$request->email;
-        $sub="Your password";
-        $pass=$request->password;
-        Mail::to($to)->send(new passwordMail($pass,$sub));
+        $to = $request->email;
+        $sub = "Your password";
+        $pass = $request->password;
+        Mail::to($to)->send(new passwordMail($pass, $sub));
 
         //this for create a wallet
-        $wallet=new wallet();
+        $wallet = new wallet();
         $wallet->user_id = $user->id;
-        $wallet->account_id=$accountId;
-        $wallet->main_balance=0.0;
-        $wallet->bonus=0.0;
-        $wallet->refer=0.0;
-        $wallet->gift=0.0;
-        $wallet->cash_back=0.0;
+        $wallet->account_id = $accountId;
+        $wallet->main_balance = 0.0;
+        $wallet->bonus = 0.0;
+        $wallet->refer = 0.0;
+        $wallet->gift = 0.0;
+        $wallet->cash_back = 0.0;
         $wallet->save();
-        
+
         event(new Registered($user));
 
         Auth::login($user);
